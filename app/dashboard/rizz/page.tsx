@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { ArrowCounterClockwiseIcon, ArrowUp, Briefcase, BriefcaseIcon, Copy, Funnel, FunnelIcon, MaskHappy, MaskHappyIcon, MaskSadIcon, PaperPlaneIcon, PersonSimpleRunIcon, SprayBottleIcon, WhatsappLogoIcon } from "@phosphor-icons/react";
@@ -59,6 +59,12 @@ export default function Page() {
 
     const { user, setUser } = useContext<any>(UserContext);
     const { showPurchase, setShowPurchase } = useContext(PurchaseContext);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to bottom whenever messages change or loading state changes
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [convMessages, loading]);
 
     // Randomize scenario after hydration to avoid SSR mismatch
     useEffect(() => {
@@ -357,7 +363,7 @@ Do not respond with anything but the your response, nothing else.`,
   <>{(showEvaluation && score >= 70) && <div className="absolute top-0 right-[50vw]">
       <Confetti particleCount={100} force={0.2} particleSize={8} destroyAfterDone />
   </div>}
-      <div className="flex flex-col space-y-0 p-4 md:p-0">
+      <div className="flex flex-col h-full p-4 md:p-0">
 
           <Dialog open={dialogOpen} onOpenChange={(open) => setDialogOpen(open)}>
               <DialogTitle className="sr-only">Score</DialogTitle>
@@ -473,7 +479,7 @@ Do not respond with anything but the your response, nothing else.`,
               </DialogContent>
           </Dialog>
 
-          <div className="flex items-start w-full justify-between flex-col md:flex-row gap-4">
+          <div className="flex-shrink-0 flex items-start w-full justify-between flex-col md:flex-row gap-4">
               <div className="flex flex-col gap-1">
                   <h1 className="text-2xl font-[500]">Rizz Practice</h1>
                   <div className="flex items-center gap-2 mt-1">
@@ -524,11 +530,11 @@ Do not respond with anything but the your response, nothing else.`,
               </div>
           </div>
 
-          <div className="flex flex-col md:flex-row w-full space-y-4 md:space-y-0 md:space-x-6 mt-4">
+          <div className="flex-1 min-h-0 flex flex-col md:flex-row w-full space-y-4 md:space-y-0 md:space-x-6 mt-4 overflow-hidden">
 
               {/* ── FULL CONVERSATION MODE ── */}
               {convMode === "full" ? (
-              <div className="border w-full flex flex-col rounded-3xl overflow-hidden">
+              <div className="border flex-1 min-h-0 flex flex-col rounded-3xl overflow-hidden">
                   {/* Header */}
                   <div className="flex w-full justify-between bg-muted p-3 px-4 space-x-2">
                       <div className="flex space-x-2 items-center w-full">
@@ -556,7 +562,7 @@ Do not respond with anything but the your response, nothing else.`,
                   </div>
 
                   {/* Messages */}
-                  <div className="flex flex-col space-y-3 p-5 min-h-[300px] max-h-[50vh] overflow-y-auto">
+                  <div className="flex-1 min-h-0 flex flex-col space-y-3 p-5 overflow-y-auto">
                       {/* Seed messages */}
                       {currentScenario.messages && currentScenario.messages.map((msg: string, i: number) => (
                           <div key={i} className={`flex ${msg.startsWith("You:") ? "justify-end" : "justify-start"}`}>
@@ -580,6 +586,8 @@ Do not respond with anything but the your response, nothing else.`,
                               </div>
                           </div>
                       )}
+                      {/* Scroll anchor */}
+                      <div ref={messagesEndRef} />
                   </div>
 
                   {/* Input */}
@@ -691,7 +699,7 @@ Do not respond with anything but the your response, nothing else.`,
               )}
 
               {!isMobile && (
-                  <div className="flex flex-col space-y-4 w-[300px]">
+                  <div className="flex flex-col space-y-4 w-[300px] overflow-y-auto pb-2">
                       <div className="bg-muted w-full h-fit p-8 rounded-3xl space-y-3">
                           <h1 className="text-2xl font-semibold">{currentScenario.name}, {currentScenario.age}</h1>
                           <div className="flex flex-col items-start space-x-2">

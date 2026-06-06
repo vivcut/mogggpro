@@ -31,11 +31,22 @@
 const TEXT_MODEL = "@cf/meta/llama-3.1-8b-instruct";
 const VISION_MODEL = "@cf/meta/llama-3.2-11b-vision-instruct";
 
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
+const ALLOWED_ORIGINS = new Set([
+  "http://localhost:3000",
+  "https://moggg.pro",
+  "https://www.moggg.pro",
+]);
+
+function getCorsHeaders(request) {
+  const origin = request.headers.get("Origin") ?? "";
+  const allowedOrigin = ALLOWED_ORIGINS.has(origin) ? origin : "";
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Vary": "Origin",
+  };
+}
 
 function hasImageContent(messages) {
   return messages.some(
@@ -47,14 +58,16 @@ function hasImageContent(messages) {
 
 export default {
   async fetch(request, env) {
+    const corsHeaders = getCorsHeaders(request);
+
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: CORS_HEADERS });
+      return new Response(null, { status: 204, headers: corsHeaders });
     }
 
     if (request.method !== "POST") {
       return new Response("Method not allowed", {
         status: 405,
-        headers: CORS_HEADERS,
+        headers: corsHeaders,
       });
     }
 
@@ -68,7 +81,7 @@ export default {
           JSON.stringify({ error: "Missing or empty messages array" }),
           {
             status: 400,
-            headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
           }
         );
       }
@@ -128,7 +141,7 @@ export default {
       }
 
       return new Response(JSON.stringify({ response }), {
-        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } catch (error) {
       const message =
@@ -142,7 +155,7 @@ export default {
 
       return new Response(JSON.stringify({ error: message }), {
         status: 500,
-        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
   },
