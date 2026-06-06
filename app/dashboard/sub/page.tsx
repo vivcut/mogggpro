@@ -1,11 +1,9 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import { UserContext } from "@/app/rootprovider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useContext, useState } from "react";
+import { useContext, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 async function startCheckout() {
@@ -18,11 +16,20 @@ async function startCheckout() {
     if (url) window.location.href = url;
 }
 
+function SuccessBanner() {
+    const searchParams = useSearchParams();
+    const success = searchParams.get("success") === "1";
+    if (!success) return null;
+    return (
+        <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
+            🎉 Payment successful! Your account has been upgraded to Premium. It may take a few seconds to reflect.
+        </div>
+    );
+}
+
 export default function Page() {
     const { user } = useContext<any>(UserContext);
     const [loading, setLoading] = useState(false);
-    const searchParams = useSearchParams();
-    const success = searchParams.get("success") === "1";
 
     const handlePurchase = async () => {
         setLoading(true);
@@ -33,11 +40,10 @@ export default function Page() {
     return (
         <div className="flex flex-col space-y-5">
             <h1 className="text-2xl font-[500]">Subscription</h1>
-            {success && (
-                <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
-                    🎉 Payment successful! Your account has been upgraded to Premium. It may take a few seconds to reflect.
-                </div>
-            )}
+
+            <Suspense fallback={null}>
+                <SuccessBanner />
+            </Suspense>
 
             <p className="text-muted-foreground">
                 Subscription Status:{" "}
@@ -75,11 +81,6 @@ export default function Page() {
                             <h1 className="text-xl">You're on Premium 🎉</h1>
                             <p className="text-muted-foreground">You have lifetime access to all Moggg features.</p>
                             <div className="flex flex-wrap gap-3">
-                                {/* <a href="/portal">
-                                    <Button variant="outline" className="h-10">
-                                        Manage My Subscription
-                                    </Button>
-                                </a> */}
                                 <a href="mailto:thewinnersface@gmail.com?subject=Subscription%20Help">
                                     <Button variant="secondary" className="h-10">
                                         Contact Support
@@ -91,6 +92,5 @@ export default function Page() {
                 </div>
             )}
         </div>
-        
     );
 }
