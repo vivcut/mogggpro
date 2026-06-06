@@ -25,7 +25,7 @@ export default function Page() {
         },
        
         { 
-            href: "#", 
+            href: "/dashboard/sub", 
             icon: <CurrencyEthIcon weight="fill" size={24} />, 
             label: "My Subscription", 
             description: "Manage your subscription plan and payment details" 

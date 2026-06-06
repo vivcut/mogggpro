@@ -39,13 +39,15 @@ const ALLOWED_ORIGINS = new Set([
 
 function getCorsHeaders(request) {
   const origin = request.headers.get("Origin") ?? "";
-  const allowedOrigin = ALLOWED_ORIGINS.has(origin) ? origin : "";
-  return {
-    "Access-Control-Allow-Origin": allowedOrigin,
+  const base = {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Vary": "Origin",
   };
+  if (ALLOWED_ORIGINS.has(origin)) {
+    base["Access-Control-Allow-Origin"] = origin;
+  }
+  return base;
 }
 
 function hasImageContent(messages) {
