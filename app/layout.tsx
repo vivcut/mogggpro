@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://moggg.pro"),
@@ -96,6 +98,8 @@ export default function RootLayout({
         <html lang="en">
             <body className="antialiased bg-[#070708]">
                 <Providers>{children}</Providers>
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );

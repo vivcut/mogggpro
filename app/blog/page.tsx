@@ -28,7 +28,7 @@ export default function BlogPage() {
             {/* Hero */}
             <section className="w-full relative overflow-hidden flex flex-col justify-center items-center px-4 pt-40 pb-24 text-center rounded-b-3xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-0 w-full h-full bg-[url('/hero3.jpg')] bg-cover bg-center" />
+                <div className="absolute inset-0 w-full h-full bg-[url('/hero3.png')] bg-cover bg-center" />
                 <div className="relative z-20 max-w-3xl space-y-6">
                     <span className="text-xs uppercase tracking-widest text-white/50 block">Knowledge Base</span>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/75">

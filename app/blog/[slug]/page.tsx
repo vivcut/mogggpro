@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Hero */}
             <section className="w-full relative overflow-hidden flex flex-col justify-center items-center px-4 pt-40 pb-20 text-center rounded-b-3xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-0 w-full h-full bg-[url('/hero3.jpg')] bg-cover bg-center" />
+                <div className="absolute inset-0 w-full h-full bg-[url('/hero3.png')] bg-cover bg-center" />
                 <div className="relative z-20 max-w-4xl space-y-5">
                     <Link href="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-white transition-colors mb-2">
                         ← Back to Blog

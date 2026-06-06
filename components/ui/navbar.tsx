@@ -69,6 +69,11 @@ export default function Navbar() {
                             Pricing
                         </Button>
                     </a>
+                    <a href="mailto:thewinnersface@gmail.com">
+                        <Button className="text-white hover:bg-white/5" variant={"ghost"}>
+                            Support
+                        </Button>
+                    </a>
                 </section>
                 <LoginWrapper>
                     <Button variant={"default"}>

@@ -32,17 +32,21 @@ export default function Page() {
             <p className="text-muted-foreground">
                 Subscription Status:{" "}
                 <span className="text-white">
-                    {user?.subscription ? "Active" : "No Subscription"}
+                    {user?.subscription ? "Premium" : "Free User"}
                 </span>
             </p>
 
-            {!user?.subscription && (
+            {!user?.subscription ? (
                 <Card>
                     <CardContent className="flex flex-col space-y-4">
-                        <h1 className="text-xl">Moggg Monthly Subscription</h1>
+                        <h1 className="text-xl">Moggg Premium</h1>
+                        <div className="bg-slate-200 p-4 rounded-lg bg-zinc-800">
+                            <h1>Refund guarantee</h1>
+                            <p className="text-muted-foreground">If you aren't satisfied, you can request a refund.</p>
+                        </div>
                         <div className="flex space-x-3">
                             <p>Redeem access to all features</p>
-                            <p className="text-muted-foreground">$10 per Month</p>
+                            <p className="text-muted-foreground">One payment of $10</p>
                         </div>
                         <Button
                             onClick={handlePurchase}
@@ -54,7 +58,29 @@ export default function Page() {
                         </Button>
                     </CardContent>
                 </Card>
+            ) : (
+                <div className="flex flex-col space-y-4">
+                    <Card>
+                        <CardContent className="flex flex-col space-y-4">
+                            <h1 className="text-xl">You're on Premium 🎉</h1>
+                            <p className="text-muted-foreground">You have lifetime access to all Moggg features.</p>
+                            <div className="flex flex-wrap gap-3">
+                                {/* <a href="/portal">
+                                    <Button variant="outline" className="h-10">
+                                        Manage My Subscription
+                                    </Button>
+                                </a> */}
+                                <a href="mailto:thewinnersface@gmail.com?subject=Subscription%20Help">
+                                    <Button variant="secondary" className="h-10">
+                                        Contact Support
+                                    </Button>
+                                </a>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
             )}
         </div>
+        
     );
 }

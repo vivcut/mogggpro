@@ -1,41 +1,30 @@
 "use client";
 
 import { createClientCall } from "@/supabase";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { UserContext } from "./rootprovider";
 
 export default function UserProvider() {
     const { user, setUser } = useContext<any>(UserContext);
     const supabase = createClientCall();
+    const handlingRef = useRef(false);
 
     useEffect(() => {
         const handleUser = async (authUser: any) => {
             if (!authUser?.email) return;
+            // Prevent duplicate concurrent calls (race between getUser + onAuthStateChange)
+            if (handlingRef.current) return;
+            handlingRef.current = true;
 
-            const email = authUser.email;
+            try {
+                const email = authUser.email;
 
-            // Check if user exists in DB
-            const { data: users, error } = await supabase
-                .from("users")
-                .select("*")
-                .eq("email", email);
-
-            if (error) {
-                console.error("Error checking user:", error);
-                return;
-            }
-
-            if (users && users.length > 0) {
-                // User exists, set user
-                console.log("User exists");
-                setUser(users[0]);
-            } else {
-                // Create new user
-                const { data: newUser, error: insertError } = await supabase
+                // Upsert: insert if not exists, do nothing on conflict (email unique)
+                await supabase
                     .from("users")
-                    .insert([
-                        {
-                            email: email,
+                    .upsert(
+                        [{
+                            email,
                             name:
                                 authUser.user_metadata?.full_name ||
                                 authUser.user_metadata?.name ||
@@ -45,17 +34,24 @@ export default function UserProvider() {
                                 authUser.user_metadata?.picture ||
                                 null,
                             subscription: false,
-                        },
-                    ])
-                    .select()
+                        }],
+                        { onConflict: "email", ignoreDuplicates: true }
+                    );
+
+                // Always fetch the authoritative row after upsert
+                const { data: dbUser, error: fetchError } = await supabase
+                    .from("users")
+                    .select("*")
+                    .eq("email", email)
                     .single();
 
-                if (insertError) {
-                    console.error("Error creating user:", insertError);
+                if (fetchError) {
+                    console.error("Error fetching user:", fetchError);
                 } else {
-                    console.log("Created new user");
-                    setUser(newUser);
+                    setUser(dbUser);
                 }
+            } finally {
+                handlingRef.current = false;
             }
         };
 

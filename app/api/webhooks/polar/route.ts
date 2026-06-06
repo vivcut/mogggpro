@@ -11,10 +11,12 @@ const supabaseAdmin = createClient(
 
 export const POST = Webhooks({
     webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
-    onOrderCreated: async (payload) => {
+    onOrderPaid: async (payload) => {
         // Use the userId we injected as metadata at checkout time.
         // This avoids any email mismatch issues.
         const userId = payload.data.metadata?.userId as string | undefined;
+        // Store the Polar customer ID so we can open the billing portal later
+        const polarCustomerId = (payload.data as any).customerId as string | undefined;
 
         if (!userId) {
             console.error("Polar webhook: no userId in metadata", payload.data);
@@ -23,7 +25,10 @@ export const POST = Webhooks({
 
         const { error } = await supabaseAdmin
             .from("users")
-            .update({ subscription: true })
+            .update({
+                subscription: true,
+                ...(polarCustomerId ? { polar_customer_id: polarCustomerId } : {}),
+            })
             .eq("id", userId);
 
         if (error) {

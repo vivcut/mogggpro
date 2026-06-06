@@ -10,17 +10,19 @@ import { useRouter } from "next/navigation";
 
 export default function LoginWrapper({
     children,
+    href = "/dashboard",
 }: Readonly<{
     children: any;
+    href?: string;
 }>) {
     const { user } = useContext<any>(UserContext);
     const router = useRouter();
 
     useEffect(() => {
         if (user) {
-            router.prefetch("/dashboard");
+            router.prefetch(href);
         }
-    }, [user]);
+    }, [user, href]);
 
     const handleGoogleSignIn = async () => {
         await supabase.auth.signInWithOAuth({
@@ -36,7 +38,7 @@ export default function LoginWrapper({
     return (
         <>
             {user ? (
-                <Link href="/dashboard">{children}</Link>
+                <Link href={href}>{children}</Link>
             ) : (
                 <Dialog>
                     <DialogTrigger asChild>{children}</DialogTrigger>

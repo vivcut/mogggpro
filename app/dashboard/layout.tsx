@@ -80,15 +80,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             )}
 
             <Dialog open={showPurchase} onOpenChange={(o) => setShowPurchase(o)}>
-                <DialogContent className="h-[80vh] sm:w-[400px] overflow-y-auto p-8 gap-0 space-y-0">
+                <DialogContent className="h-[80vh] sm:w-[500px] overflow-y-auto p-8 gap-0 space-y-0">
                     <div className="flex flex-col space-y-6">
-                        <h1 className="text-2xl">Buy Moggg</h1>
-                        <p className="text-muted-foreground">You must purchase a subscription before using any features</p>
+                        <h1 className="text-2xl">Buy Moggg Premium</h1>
+                        <p className="text-muted-foreground">Pay once, then yours forever</p>
+                        <div className="bg-slate-200 p-4 rounded-lg bg-zinc-800">
+                            <h1>Refund guarantee</h1>
+                            <p className="text-muted-foreground">If you aren't satisfied, you can request a refund.</p>
+                        </div>
                         <CardContent className="flex flex-col space-y-4 bg-muted h-fit py-6 rounded-3xl border-border border">
-                            <h1 className="text-xl">Moggg Monthly Subscription</h1>
+                            <h1 className="text-xl">Moggg Premium</h1>
                             <div className="flex space-x-3">
                                 <p>All features included</p>
-                                <p className="text-muted-foreground">$10 per Month</p>
+                                <p className="text-muted-foreground">$10 once</p>
                             </div>
                             <Button onClick={async () => {
                                 const res = await fetch("/api/checkout", { method: "POST" });
