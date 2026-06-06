@@ -1,0 +1,96 @@
+---
+title: How to Predict Your Adult Height – The Most Accurate Methods
+slug: how-to-predict-your-adult-height
+description: Learn the most accurate methods to predict your adult height including the mid-parental formula, bone age X-rays, and growth pattern analysis.
+date: 2024-05-26
+tags: height prediction, adult height, grow taller, height calculator, genetics
+---
+
+# How to Predict Your Adult Height – The Most Accurate Methods
+
+One of the most common questions teenagers and parents ask: how tall will I be when I stop growing? While nothing is perfectly certain, several methods can predict adult height within 1–3 inches of accuracy.
+
+---
+
+## Method 1: Mid-Parental Height Formula (Most Accessible)
+
+The most widely used formula for predicting adult height is the mid-parental formula, which accounts for the average of your parents' heights plus a gender adjustment.
+
+**For males:**
+(Father's height in inches + Mother's height in inches + 5) ÷ 2
+
+**For females:**
+(Father's height in inches + Mother's height in inches – 5) ÷ 2
+
+This gives you a predicted height with a range of ±2 inches in 68% of cases, and ±4 inches for 95%.
+
+**Example:**
+- Father: 5'10" (70 inches)
+- Mother: 5'5" (65 inches)
+- Male prediction: (70 + 65 + 5) ÷ 2 = 70 inches = **5'10"**
+
+---
+
+## Method 2: Current Height at Key Ages
+
+Research has established strong correlations between height at specific ages and adult height:
+
+| Current Age | Multiply by to estimate adult height |
+|---|---|
+| 2 years old | × 2.06 (boys) / × 1.88 (girls) |
+| 3 years old | × 1.87 (boys) / × 1.73 (girls) |
+| 4 years old | × 1.73 (boys) / × 1.63 (girls) |
+
+These are rough estimates — accuracy increases with age.
+
+For **boys at age 13–14:**
+Current height ÷ 0.85 gives a reasonable adult height estimate.
+
+---
+
+## Method 3: Bone Age (Most Accurate)
+
+The most clinically accurate method is a bone age X-ray — typically of the left wrist. Doctors compare the fusion state of your growth plates to standardized charts to determine how much growing you have left.
+
+If your bone age is younger than your chronological age, you'll likely grow more than predicted by parental formulas. If older, you may stop sooner.
+
+This is how pediatricians confirm whether a child is on track and how much growth potential remains.
+
+---
+
+## Method 4: Growth Pattern Analysis
+
+Track your height over 6-month intervals. Most boys grow:
+- Ages 12–14: 3–4 inches/year (peak velocity)
+- Ages 14–16: 2–3 inches/year
+- Ages 16–18: 1–2 inches/year
+- Ages 18–21: 0–0.5 inches/year (if growth plates still open)
+
+If you're still growing at 1+ inch per year, you have significant growth remaining.
+
+---
+
+## Factors That Affect Your Final Height
+
+**Genetic ceiling:** 60–80% of your height is determined by genetics. The mid-parental formula is your best proxy for this.
+
+**Nutrition:** Growing children and teenagers need adequate:
+- Calories (undereating stunts growth)
+- Protein (1g per pound of bodyweight)
+- Calcium + Vitamin D
+- Zinc
+
+**Sleep:** HGH (Human Growth Hormone) is primarily secreted during deep sleep. Chronic sleep deprivation can reduce final height.
+
+**Health:** Chronic illness, malnutrition, or hormonal disorders can reduce height.
+
+---
+
+## What If You're Already Done Growing?
+
+If you're past 21 and your growth plates have fused:
+- Focus on posture correction (can add 1–3 inches of apparent height)
+- Style optimization for perceived height
+- Frame development (shoulder width and V-taper)
+
+**[Use Mogg's Height Calculator →](/height-calculator)** for a personalized height potential estimate and lifestyle optimization plan, whether you're still growing or maximizing what you have.

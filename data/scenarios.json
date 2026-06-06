@@ -1,0 +1,352 @@
+[
+  {
+    "name": "Mia",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "yoga, thrifting, film photography",
+    "job": "graphic designer",
+    "traits": "chill, creative, a little artsy",
+    "personality": "introverted",
+    "messages": [
+      "Mia: hey! ok so I have a very important question",
+      "You: lol what is it",
+      "Mia: pineapple on pizza — yes or absolutely not 🍍"
+    ]
+  },
+  {
+    "name": "Leila",
+    "age": 25,
+    "gender": "female",
+    "hobbies": "dancing, rooftop bars, travel",
+    "job": "event planner",
+    "traits": "spontaneous, fun-loving, outgoing",
+    "personality": "extroverted",
+    "messages": [
+      "Leila: okay so your last photo… are you actually that fun or is that just for the algorithm 😭",
+      "You: haha 100% genuine",
+      "Leila: prove it then. what's the most spontaneous thing you've done recently?"
+    ]
+  },
+  {
+    "name": "Zoe",
+    "age": 22,
+    "gender": "female",
+    "hobbies": "bouldering, reading, cooking",
+    "job": "student",
+    "traits": "curious, warm, low-key competitive",
+    "personality": "ambivert",
+    "messages": [
+      "Zoe: hey! how's your week going so far?",
+      "You: pretty good honestly, just got off work. you?",
+      "Zoe: chaotic lol. I have three deadlines this week but somehow I'm on here 😅"
+    ]
+  },
+  {
+    "name": "Jordan",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "gaming, hiking, cooking",
+    "job": "software engineer",
+    "traits": "laid-back, witty, curious",
+    "personality": "introverted",
+    "messages": [
+      "Jordan: yo if you could only eat one cuisine for the rest of your life what is it",
+      "You: that's genuinely a tough one",
+      "Jordan: the hardest question I've ever asked anyone tbh"
+    ]
+  },
+  {
+    "name": "Ava",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "hiking, painting, dog walking",
+    "job": "landscape architect",
+    "traits": "outdoorsy, artsy, easygoing",
+    "personality": "introverted",
+    "messages": [
+      "Ava: omg wait is that a golden retriever in your photo??",
+      "You: haha yeah that's my dog Biscuit",
+      "Ava: I'm obsessed. what's her personality like 🥺"
+    ]
+  },
+  {
+    "name": "Noah",
+    "age": 26,
+    "gender": "male",
+    "hobbies": "surfing, music production, cooking",
+    "job": "music producer",
+    "traits": "creative, laid-back, passionate",
+    "personality": "extroverted",
+    "messages": [
+      "Noah: ok real talk — morning person or night owl",
+      "You: depends on the day honestly",
+      "Noah: the diplomatic answer lmao. but like, 3am vibe or 6am gym vibe?"
+    ]
+  },
+  {
+    "name": "Sofia",
+    "age": 26,
+    "gender": "female",
+    "hobbies": "traveling, cooking, photography",
+    "job": "travel content creator",
+    "traits": "adventurous, warm, enthusiastic",
+    "personality": "extroverted",
+    "messages": [
+      "Sofia: I need a second opinion — should I book a solo trip to Japan or wait til I have someone to go with?",
+      "You: solo trip, no contest",
+      "Sofia: THANK YOU. everyone keeps saying wait but that feels like forever 😭"
+    ]
+  },
+  {
+    "name": "Kai",
+    "age": 25,
+    "gender": "male",
+    "hobbies": "skateboarding, tattoos, photography",
+    "job": "tattoo artist",
+    "traits": "confident, creative, chill",
+    "personality": "extroverted",
+    "messages": [
+      "Kai: you look like you'd have good music taste. what are you actually listening to rn",
+      "You: that's a very bold assumption lol",
+      "Kai: I'm rarely wrong 😏 hit me with it"
+    ]
+  },
+  {
+    "name": "Emma",
+    "age": 28,
+    "gender": "female",
+    "hobbies": "yoga, reading, pottery",
+    "job": "nurse",
+    "traits": "caring, calm, quietly funny",
+    "personality": "introverted",
+    "messages": [
+      "Emma: hey! I saw you like hiking — do you have a go-to trail or are you more of an explore-and-get-lost type",
+      "You: definitely explore and get lost haha",
+      "Emma: ok same, I respect that 😄"
+    ]
+  },
+  {
+    "name": "Marcus",
+    "age": 29,
+    "gender": "male",
+    "hobbies": "basketball, cooking, podcasts",
+    "job": "sports journalist",
+    "traits": "funny, confident, easy to talk to",
+    "personality": "extroverted",
+    "messages": [
+      "Marcus: okay hypothetically — you're cooking dinner for someone you're trying to impress. what are you making",
+      "You: ooh that's pressure",
+      "Marcus: I'm taking notes. this matters 👀"
+    ]
+  },
+  {
+    "name": "Luna",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "astrology, thrifting, indie music",
+    "job": "barista",
+    "traits": "dreamy, quirky, sincere",
+    "personality": "introverted",
+    "messages": [
+      "Luna: ok don't judge me but I always check compatibility first lol. what's your sign?",
+      "You: I'm a [sign], is that good or bad",
+      "Luna: …okay we might actually get along 👀"
+    ]
+  },
+  {
+    "name": "Ryan",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "rock climbing, video games, cooking",
+    "job": "physical therapist",
+    "traits": "genuine, adventurous, funny",
+    "personality": "ambivert",
+    "messages": [
+      "Ryan: be honest — are you actually funny or is your profile doing all the heavy lifting",
+      "You: lmaooo rude but fair",
+      "Ryan: I appreciate the honesty 😄"
+    ]
+  },
+  {
+    "name": "Isla",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "painting, wine tasting, traveling",
+    "job": "art curator",
+    "traits": "sophisticated, witty, warm",
+    "personality": "ambivert",
+    "messages": [
+      "Isla: random but I'm curious — what's something you're genuinely passionate about that surprises people",
+      "You: hmm that's actually a good question",
+      "Isla: I know 😄 I don't do small talk well"
+    ]
+  },
+  {
+    "name": "Dev",
+    "age": 28,
+    "gender": "male",
+    "hobbies": "chess, cycling, cooking",
+    "job": "startup founder",
+    "traits": "ambitious, direct, quick-witted",
+    "personality": "extroverted",
+    "messages": [
+      "Dev: alright I'm going to skip the 'hey how are you' — what's the best thing that happened to you this week",
+      "You: love this approach actually",
+      "Dev: life's too short for boring openers 😄 now answer the question"
+    ]
+  },
+  {
+    "name": "Chloe",
+    "age": 22,
+    "gender": "female",
+    "hobbies": "baking, dancing, TikTok",
+    "job": "marketing intern",
+    "traits": "bubbly, energetic, fun",
+    "personality": "extroverted",
+    "messages": [
+      "Chloe: okay so I'm trying to settle a debate with my friends — is it weird to eat cereal at midnight",
+      "You: absolutely not, that's completely normal",
+      "Chloe: THANK YOU. see I knew I'd like you 🥣"
+    ]
+  },
+  {
+    "name": "Alex",
+    "age": 26,
+    "gender": "male",
+    "hobbies": "running, reading, photography",
+    "job": "journalist",
+    "traits": "thoughtful, curious, observant",
+    "personality": "introverted",
+    "messages": [
+      "Alex: hey! just saw we both have [city] in common — are you actually from here or just based here",
+      "You: based here, moved a couple years ago",
+      "Alex: same! best hidden gem you've found so far?"
+    ]
+  },
+  {
+    "name": "Nadia",
+    "age": 25,
+    "gender": "female",
+    "hobbies": "Brazilian jiu-jitsu, cooking, true crime",
+    "job": "lawyer",
+    "traits": "sharp, competitive, secretly hilarious",
+    "personality": "ambivert",
+    "messages": [
+      "Nadia: I could technically get you to admit to something you didn't do in under 3 questions. want to try?",
+      "You: wow okay I accept this challenge",
+      "Nadia: I like your confidence. you're going to regret this 😈"
+    ]
+  },
+  {
+    "name": "Luca",
+    "age": 30,
+    "gender": "male",
+    "hobbies": "cooking, wine, travel",
+    "job": "chef",
+    "traits": "passionate, warm, charming",
+    "personality": "extroverted",
+    "messages": [
+      "Luca: okay I need an honest answer — what's your go-to comfort food at like 11pm",
+      "You: probably pasta honestly",
+      "Luca: respectful. I'll allow it 🍝"
+    ]
+  },
+  {
+    "name": "Priya",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "bollywood dance, cooking, hiking",
+    "job": "UX designer",
+    "traits": "creative, warm, playful",
+    "personality": "extroverted",
+    "messages": [
+      "Priya: hi!! ok totally random but your profile made me smile so I had to say something 😊",
+      "You: that's really sweet, thanks!",
+      "Priya: no pressure but… what are you up to this weekend? asking for a friend (me)"
+    ]
+  },
+  {
+    "name": "Tyler",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "skateboarding, streetwear, music",
+    "job": "content creator",
+    "traits": "confident, playful, stylish",
+    "personality": "extroverted",
+    "messages": [
+      "Tyler: you look like you'd win a staring contest",
+      "You: is that a compliment",
+      "Tyler: it's whatever you want it to be 😏"
+    ]
+  },
+  {
+    "name": "Hannah",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "musical theatre, baking, yoga",
+    "job": "drama teacher",
+    "traits": "expressive, funny, warm",
+    "personality": "extroverted",
+    "messages": [
+      "Hannah: okay so if our first date was a movie genre what would it be",
+      "You: haha I haven't even thought about that",
+      "Hannah: romantic comedy? psychological thriller? choose wisely 👀"
+    ]
+  },
+  {
+    "name": "Seb",
+    "age": 28,
+    "gender": "male",
+    "hobbies": "football, cooking, travel",
+    "job": "personal trainer",
+    "traits": "straightforward, funny, reliable",
+    "personality": "extroverted",
+    "messages": [
+      "Seb: hey! you seem like a cool person. what are you actually looking for on here",
+      "You: refreshing question honestly",
+      "Seb: I hate wasting time so I just ask lol. no wrong answers"
+    ]
+  },
+  {
+    "name": "Jess",
+    "age": 26,
+    "gender": "female",
+    "hobbies": "reading, brunch, ceramics",
+    "job": "editor",
+    "traits": "witty, bookish, low-key sarcastic",
+    "personality": "introverted",
+    "messages": [
+      "Jess: okay hot take: brunch is overrated and people only go for the photos",
+      "You: whoa controversial",
+      "Jess: fight me. or… don't. I'm actually very non-confrontational 😅"
+    ]
+  },
+  {
+    "name": "Finn",
+    "age": 25,
+    "gender": "male",
+    "hobbies": "surfing, van life, guitar",
+    "job": "freelance photographer",
+    "traits": "free-spirited, chill, genuine",
+    "personality": "introverted",
+    "messages": [
+      "Finn: hey, random question — if you could drop everything and go somewhere tomorrow where would it be",
+      "You: ooh that's a good one",
+      "Finn: I've been thinking about it a lot lately lol. no wrong answers"
+    ]
+  },
+  {
+    "name": "Zara",
+    "age": 25,
+    "gender": "female",
+    "hobbies": "pole dancing, cooking, vintage fashion",
+    "job": "social media manager",
+    "traits": "bold, funny, unapologetic",
+    "personality": "extroverted",
+    "messages": [
+      "Zara: okay real question: what's your go-to move when you're actually interested in someone or do you just… not have one",
+      "You: lmao okay calling me out immediately",
+      "Zara: I like to get to the point 😄 so?"
+    ]
+  }
+]

@@ -1,0 +1,125 @@
+---
+title: How to Analyze Your Face – A Complete Guide to Facial Aesthetics
+slug: how-to-analyze-your-face
+description: Learn how to objectively analyze your facial features — jawline, cheekbones, eyes, symmetry, and more. A complete guide to understanding your facial aesthetics.
+date: 2024-06-03
+tags: face analysis, facial aesthetics, PSL scale, jawline, symmetry
+---
+
+# How to Analyze Your Face – A Complete Guide to Facial Aesthetics
+
+Most people have no idea how their face actually looks. We're biased observers of our own reflection — we unconsciously notice our best angles, avoid our worst, and have no objective benchmark for comparison.
+
+Facial analysis gives you that objectivity. Here's how to do it properly.
+
+---
+
+## The Key Facial Features to Analyze
+
+### 1. Jawline (Weight: Very High)
+
+The jawline is one of the most important features in male facial attractiveness. A strong, well-defined jaw signals masculinity, testosterone, and good bone structure.
+
+**What to look for:**
+- Definition and sharpness of the jaw angles
+- Width of the jaw relative to the face
+- Chin projection (forward growth)
+- Ramus height (the vertical part of the jaw)
+
+**Good vs. poor jawline:**
+- Good: Sharp jaw angles, visible definition even with relaxed face
+- Poor: Rounded jaw, recessed chin, no visible definition
+
+**View to assess:** Side profile photo is essential for jawline analysis.
+
+### 2. Cheekbones (Weight: High)
+
+High, prominent cheekbones create the "hunter eyes" effect and add dimensionality to the face.
+
+**What to look for:**
+- Height of cheekbones relative to the eyes
+- Projection (how much they protrude forward)
+- Width at the cheekbones vs. the jaw (creating an inverted triangle)
+
+### 3. Eyes (Weight: High)
+
+Eyes are often called the most attractive facial feature. The looksmaxxing community focuses on several eye characteristics:
+
+**What to look for:**
+- **Canthal tilt** — Do the outer corners tilt up (positive) or down (negative)? Positive tilt is strongly preferred
+- **Orbital rim** — How deep-set are the eyes?
+- **Limbal ring** — The dark ring around the iris
+- **Color and whites** — Clear, white sclera signals health
+
+### 4. Facial Symmetry (Weight: High)
+
+Symmetry is one of the most universal indicators of genetic health. The human brain is hardwired to find symmetrical faces more attractive.
+
+**How to assess symmetry:**
+- Draw a vertical line down the center of your face in a front photo
+- Compare left vs. right: Are your eyes at the same height? Is your nose centered? Is your chin centered?
+
+Perfect symmetry is rare — most people have some degree of asymmetry. The question is how noticeable it is.
+
+### 5. Skin Quality (Weight: Medium-High)
+
+Clear, smooth, even-toned skin signals health and youth. Acne, scarring, hyperpigmentation, and oiliness all reduce perceived attractiveness.
+
+**What to assess:**
+- Acne and breakouts
+- Pore size and visibility
+- Skin tone evenness
+- Dark circles and puffiness under eyes
+
+### 6. Nose
+
+The nose is often an insecurity point but actually matters less than most people think in overall facial attractiveness. More important is the relationship between the nose and other features.
+
+**What to look for:**
+- Nose-to-face ratio (proportionality)
+- Nasal tip projection
+- Dorsal hump or not
+
+---
+
+## The PSL Rating System
+
+After analyzing individual features, you arrive at an overall PSL score:
+
+| PSL Range | Tier | Description |
+|---|---|---|
+| 1.0 – 2.0 | Subhuman | Severe deformity or asymmetry |
+| 2.0 – 3.0 | Sub-Average | Noticeably unattractive |
+| 3.0 – 4.0 | LTN | Slightly below average |
+| 4.0 – 5.0 | MTN | The average person |
+| 5.0 – 6.0 | HTN | Conventionally attractive |
+| 6.0 – 6.5 | Chadlite | Striking features, top 15% |
+| 6.5 – 7.0 | Chad | Top 2% |
+| 7.0+ | Giga Chad / Tera Chad | Top 0.1% |
+
+---
+
+## How to Properly Photograph Your Face for Analysis
+
+Most selfies are wildly inaccurate. Here's how to get a true representation:
+
+1. **Use a camera, not a front-facing phone cam** — Front cameras have a wide angle that distorts your nose and proportions
+2. **Natural lighting** — Window light from the side is ideal
+3. **Take both front AND side photos** — You cannot properly assess jawline or chin projection without a side view
+4. **Neutral expression** — Don't smile or make faces
+5. **Hair pulled back** — So your hairline doesn't obscure your forehead
+
+---
+
+## Get an Objective AI Analysis
+
+Doing this manually is difficult. Our brains introduce biases — we tend to be either too harsh or too lenient on ourselves.
+
+**[Mogg's AI Face Analyzer](/face-analyzer)** does this for you objectively:
+- Upload a front and side photo
+- Get scored on jawline, cheekbones, eyes, skin quality, facial harmony, and dimorphism
+- Receive your PSL score (1–8 scale)
+- See which demographics find you most attractive
+- Get 3-5 personalized improvement tips
+
+**[Analyze your face now →](/face-analyzer)**
