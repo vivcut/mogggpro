@@ -188,6 +188,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
             )}
 
+            {/* Prefetch all dashboard pages so navigation is instant */}
+            <div className="sr-only" aria-hidden>
+                <Link href="/dashboard" prefetch>home</Link>
+                <Link href="/dashboard/rizz" prefetch>rizz</Link>
+                <Link href="/dashboard/face" prefetch>face</Link>
+                <Link href="/dashboard/height" prefetch>height</Link>
+                <Link href="/dashboard/sub" prefetch>sub</Link>
+            </div>
+
             {/* Main Content */}
             <div className={`w-full h-full overflow-y-hidden ${isMobile && showMobileMenu ? "ml-0" : ""} ${!isMobile && "p-2"}`}>
                 <section className={`pb-0 border border-border/50 w-full h-full bg-background ${!isMobile ? "rounded-3xl p-8" : "px-4 pt-5"}`}>
