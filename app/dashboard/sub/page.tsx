@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { UserContext } from "@/app/rootprovider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
