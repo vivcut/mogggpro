@@ -4,6 +4,7 @@ import { UserContext } from "@/app/rootprovider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useContext, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 async function startCheckout() {
     const res = await fetch("/api/checkout", { method: "POST" });
@@ -18,6 +19,8 @@ async function startCheckout() {
 export default function Page() {
     const { user } = useContext<any>(UserContext);
     const [loading, setLoading] = useState(false);
+    const searchParams = useSearchParams();
+    const success = searchParams.get("success") === "1";
 
     const handlePurchase = async () => {
         setLoading(true);
@@ -28,6 +31,11 @@ export default function Page() {
     return (
         <div className="flex flex-col space-y-5">
             <h1 className="text-2xl font-[500]">Subscription</h1>
+            {success && (
+                <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
+                    🎉 Payment successful! Your account has been upgraded to Premium. It may take a few seconds to reflect.
+                </div>
+            )}
 
             <p className="text-muted-foreground">
                 Subscription Status:{" "}

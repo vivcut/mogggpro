@@ -27,10 +27,17 @@ export async function GET(request: NextRequest) {
 
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      return NextResponse.redirect(`${origin}/dashboard`);
+      // In production on Vercel, use x-forwarded-host to get the real public hostname
+      const forwardedHost = request.headers.get("x-forwarded-host");
+      const protocol = request.headers.get("x-forwarded-proto") ?? "https";
+      const baseUrl = forwardedHost ? `${protocol}://${forwardedHost}` : origin;
+      return NextResponse.redirect(`${baseUrl}/dashboard`);
     }
     console.error("Auth callback error:", error);
   }
 
-  return NextResponse.redirect(`${origin}/?error=auth`);
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const protocol = request.headers.get("x-forwarded-proto") ?? "https";
+  const baseUrl = forwardedHost ? `${protocol}://${forwardedHost}` : origin;
+  return NextResponse.redirect(`${baseUrl}/?error=auth`);
 }

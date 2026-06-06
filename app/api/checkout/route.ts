@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get the user's DB ID (not auth ID, the row ID in our users table)
+    // Get the user's DB ID
     const { data: dbUser, error: dbError } = await supabase
         .from("users")
         .select("id")
@@ -36,26 +36,30 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Guard: ensure the product ID env var is set
     const productId = process.env.POLAR_PRODUCTID;
     if (!productId) {
         console.error("POLAR_PRODUCTID environment variable is not set");
         return NextResponse.json({ error: "Server misconfiguration: missing product ID" }, { status: 500 });
     }
 
+    // Determine the public base URL for the success redirect
+    const forwardedHost = request.headers.get("x-forwarded-host");
+    const protocol = request.headers.get("x-forwarded-proto") ?? "https";
+    const baseUrl = forwardedHost ? `${protocol}://${forwardedHost}` : `${request.nextUrl.protocol}//${request.nextUrl.host}`;
+
     const requestBody = {
-        products: [productId],
+        product_id: productId,
         metadata: {
             userId: dbUser.id,
         },
-        // Pre-fill the email for convenience (but we won't use it in the webhook)
         customer_email: session.user.email,
+        success_url: `${baseUrl}/dashboard/sub?success=1`,
     };
 
     console.log("Polar checkout request body:", JSON.stringify(requestBody));
 
-    // Create a Polar checkout session with userId as metadata
-    const response = await fetch("https://api.polar.sh/v1/checkouts/", {
+    // Create a Polar checkout session
+    const response = await fetch("https://api.polar.sh/v1/checkouts/custom/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
