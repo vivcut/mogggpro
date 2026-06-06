@@ -31,6 +31,7 @@ export default function PublicFooter() {
                     <ul className="space-y-2 text-muted-foreground">
                         <li><Link href="/privacypolicy.pdf" className="hover:text-foreground transition">Privacy</Link></li>
                         <li><Link href="/tos.pdf" className="hover:text-foreground transition">Terms</Link></li>
+                        <li><a href="mailto:thewinnersface@gmail.com" className="hover:text-foreground transition">Support</a></li>
                     </ul>
                 </div>
             </div>
