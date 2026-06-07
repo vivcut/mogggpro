@@ -105,6 +105,9 @@ JSON fields required:
 - dimorphism: integer 0-100 sexual dimorphism (masculine/feminine features appropriate for gender)
 - eyes: integer 0-100 eye shape, symmetry, and expressiveness
 - facial_harmony: integer 0-100 overall facial symmetry and proportions
+- eye_color: string — detected eye color (e.g. "Brown", "Blue", "Green", "Hazel", "Amber", "Gray", "Black")
+- upper_eyelid_exposure: string — one of exactly: "None", "Present", or "A lot" — how much upper eyelid is visible between the iris and the upper eyelid fold
+- canthal_tilt: string — one of exactly: "Positive", "Negative", or "Neutral" — the angle of the outer vs inner canthus of the eye
 - improvements: array of 3-5 short actionable improvement tips as strings
 - racial_attraction: object with keys "Asian", "Caucasian", "Black", "Hispanic", "Middle Eastern", "South Asian" — each value is an integer 0-100 representing estimated % attraction from that group based on facial features and aesthetics
 - psl_score: a decimal number from 1.0 to 8.0 representing the PSL (Pretty Scale Lookism) rating. Use the following tiers exactly:
@@ -188,6 +191,10 @@ Example output format:
     return (
         <div className="w-full h-full flex flex-col">
             <h1 className="text-2xl font-[500]">Face Analysis</h1>
+            <div className="mt-2 flex items-start gap-2 rounded-xl border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-xs text-yellow-400">
+                <span className="mt-0.5 shrink-0">⚠️</span>
+                <span>This may take <strong>1–2 minutes</strong> — we scan your images through multiple trained AI models and perform a deep facial analysis. Please don't close the page.</span>
+            </div>
             <div className="max-w-6xl mx-auto mt-6 h-full w-full">
                 {!result ? (
                     <div className="space-y-6">
@@ -342,6 +349,87 @@ Example output format:
                                 )}
                             </div>
 
+                            {/* Overall & Potential Scores */}
+                            <FadeIn delay={100}>
+                                <div className="mt-6 grid grid-cols-2 gap-4">
+                                    <div className="rounded-3xl p-5 bg-white/5 space-y-1">
+                                        <p className="text-xs text-muted-foreground uppercase tracking-widest">Overall Score</p>
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-4xl font-bold text-white">{result.score}</span>
+                                            <span className="text-muted-foreground text-sm">/ 100</span>
+                                        </div>
+                                        <Progress value={result.score} className="h-2 mt-2" />
+                                    </div>
+                                    <div className="rounded-3xl p-5 bg-white/5 space-y-1">
+                                        <p className="text-xs text-muted-foreground uppercase tracking-widest">Potential Score</p>
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-4xl font-bold text-green-400">{result.potential}</span>
+                                            <span className="text-muted-foreground text-sm">/ 100</span>
+                                        </div>
+                                        <Progress value={result.potential} className="h-2 mt-2 [&>*]:bg-green-400" />
+                                    </div>
+                                </div>
+                            </FadeIn>
+
+                            {/* Feature Breakdown */}
+                            <FadeIn delay={150}>
+                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Feature Breakdown</h3>
+                                    {[
+                                        { label: "Jawline",         value: result.jawline_score },
+                                        { label: "Cheekbones",      value: result.cheekbones },
+                                        { label: "Skin Quality",    value: result.skin_quality },
+                                        { label: "Dimorphism",      value: result.dimorphism },
+                                        { label: "Eyes",            value: result.eyes },
+                                        { label: "Facial Harmony",  value: result.facial_harmony },
+                                    ].map(({ label, value }) => (
+                                        <div key={label} className="flex items-center gap-3">
+                                            <span className="w-32 text-sm text-muted-foreground shrink-0">{label}</span>
+                                            <div className="flex-1">
+                                                <Progress
+                                                    value={value}
+                                                    className={`h-2 ${value >= 70 ? '[&>*]:bg-[#34d399]' : value >= 50 ? '[&>*]:bg-[#fdfd96]' : '[&>*]:bg-[#fb923c]'}`}
+                                                />
+                                            </div>
+                                            <span className="w-10 text-right text-sm font-semibold shrink-0">{value}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </FadeIn>
+
+                            {/* Eye Details */}
+                            {(result.eye_color || result.upper_eyelid_exposure || result.canthal_tilt) && (
+                                <FadeIn delay={175}>
+                                    <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                        <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Eye Details</h3>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            {result.eye_color && (
+                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                    <span className="text-xs text-muted-foreground">Eye Color</span>
+                                                    <span className="text-sm font-semibold text-white">{result.eye_color}</span>
+                                                </div>
+                                            )}
+                                            {result.upper_eyelid_exposure && (
+                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                    <span className="text-xs text-muted-foreground">Eyelid Exposure</span>
+                                                    <span className={`text-sm font-semibold ${result.upper_eyelid_exposure === "A lot" ? "text-green-400" : result.upper_eyelid_exposure === "Present" ? "text-yellow-400" : "text-red-400"}`}>
+                                                        {result.upper_eyelid_exposure}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {result.canthal_tilt && (
+                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                    <span className="text-xs text-muted-foreground">Canthal Tilt</span>
+                                                    <span className={`text-sm font-semibold ${result.canthal_tilt === "Positive" ? "text-green-400" : result.canthal_tilt === "Neutral" ? "text-yellow-400" : "text-red-400"}`}>
+                                                        {result.canthal_tilt}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </FadeIn>
+                            )}
+
                             {/* PSL Scale */}
                             {result.psl_score != null && (() => {
                                 const tier = getPslTier(result.psl_score);
@@ -378,6 +466,23 @@ Example output format:
                                 );
                             })()}
 
+
+                            {/* Improvement Tips */}
+                            {result.improvements && result.improvements.length > 0 && (
+                                <FadeIn delay={225}>
+                                    <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                        <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Improvement Tips</h3>
+                                        <div className="flex flex-col gap-3">
+                                            {result.improvements.map((tip: string, i: number) => (
+                                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                    <span className="text-green-400 font-bold text-sm shrink-0 mt-0.5">{i + 1}.</span>
+                                                    <p className="text-sm text-white/80">{tip}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </FadeIn>
+                            )}
 
                             {/* Most Attractive To */}
                             {result.racial_attraction && Object.keys(result.racial_attraction).length > 0 && (

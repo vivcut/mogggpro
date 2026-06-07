@@ -54,7 +54,10 @@ Example output:
 
             try {
                 const cleaned = aiResponse.replace(/```json|```/g, "").trim();
-                const parsedData = JSON.parse(cleaned);
+                // Extract the first JSON object block in case there's surrounding text
+                const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) throw new Error("No JSON object found in response");
+                const parsedData = JSON.parse(jsonMatch[0]);
                 setVerbana(parsedData);
             } catch (error) {
                 console.error("Failed to parse height AI JSON:", error, aiResponse);
