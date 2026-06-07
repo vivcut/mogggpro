@@ -355,9 +355,6 @@ Example output format:
                                 );
                             })()}
 
-                            {/* Score metrics */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 mt-6 lg:grid-cols-4 gap-4 mb-8">
-                            )}
 
                             {/* Most Attractive To */}
                             {result.racial_attraction && Object.keys(result.racial_attraction).length > 0 && (
