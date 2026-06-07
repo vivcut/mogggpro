@@ -357,42 +357,6 @@ Example output format:
 
                             {/* Score metrics */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 mt-6 lg:grid-cols-4 gap-4 mb-8">
-                                {[
-                                    { title: "Overall Score", value: result.score },
-                                    { title: "Potential Score", value: result.potential },
-                                    { title: "Jawline", value: result.jawline_score },
-                                    { title: "Cheekbones", value: result.cheekbones },
-                                    { title: "Skin Quality", value: result.skin_quality },
-                                    { title: "Dimorphism", value: result.dimorphism },
-                                    { title: "Eyes", value: result.eyes },
-                                    { title: "Facial Harmony", value: result.facial_harmony }
-                                ].map((metric, index) => (
-                                    <FadeIn key={metric.title} delay={(index + 1) * 400}>
-                                        <div className="rounded-3xl flex flex-col space-y-3 p-8 relative bg-white/5">
-                                            <h3 className="font-[500] text-md text-white/70">{metric.title}</h3>
-                                            <span className="font-bold text-4xl">{metric.value}</span>
-                                            <Progress
-                                                value={metric.value}
-                                                className={`h-3 striped-bg ${metric.value < 60 ? '[&>*]:bg-red-500' : metric.value <= 80 ? '[&>*]:bg-[#fdfd96]' : '[&>*]:bg-[#34d399]'}`}
-                                            />
-                                        </div>
-                                    </FadeIn>
-                                ))}
-                            </div>
-
-                            {/* Improvements */}
-                            {result.improvements?.length > 0 && (
-                                <div className="space-y-4">
-                                    <h3 className="font-medium">Improvement Suggestions</h3>
-                                    <div className="space-y-2">
-                                        {result.improvements.map((suggestion: string, index: number) => (
-                                            <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background border border-border/30 hover:border-primary/30 transition-colors">
-                                                <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary mt-0.5 shrink-0">{index + 1}</div>
-                                                <p className="text-sm leading-relaxed">{suggestion}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
                             )}
 
                             {/* Most Attractive To */}

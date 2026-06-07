@@ -169,10 +169,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="flex w-full justify-between items-center">
                         {(isMobile || !sidebarCollapsed) && <div className="flex space-x-2.5 items-center justify-between">
                             <Avatar className="size-8">
-                                <AvatarImage src={user?.image} />
-                                <AvatarFallback className="text-sm">{user?.name?.substring(0, 2)}</AvatarFallback>
+                                <AvatarImage src={user?.image ?? undefined} />
+                                <AvatarFallback className="text-sm flex items-center justify-center">
+                                    {user?.name
+                                        ? user.name.substring(0, 2)
+                                        : (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
+                                                <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8C53.82,195,79.5,184,128,184s74.18,11,89.07,36a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/>
+                                            </svg>
+                                        )
+                                    }
+                                </AvatarFallback>
                             </Avatar>
-                            <p className="text-sm font-semibold">{user?.name}</p>
+                            <p className="text-sm font-semibold">
+                                {user?.name ?? user?.email?.split("@")[0]}
+                            </p>
                         </div>}
                         <Button
                             onClick={async () => {
