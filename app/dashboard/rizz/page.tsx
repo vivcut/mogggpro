@@ -376,11 +376,13 @@ Do not respond with anything but the your response, nothing else.`,
                       </p>
                   </div>
                   <p className="text-4xl font-semibold w-full">{score ?? 0}/100</p>
-                  <DialogClose>
-                      {(showEvaluation) && <Button disabled={loading} className="glass" variant="outline" onClick={nextScenario}>
-                          {loading ? <LoadingSpinner /> : <>Next Scenario</>}
-                      </Button>}
-                  </DialogClose>
+                  {showEvaluation && (
+                      <DialogClose asChild>
+                          <Button disabled={loading} className="glass" variant="outline" onClick={nextScenario}>
+                              {loading ? <LoadingSpinner /> : <>Next Scenario</>}
+                          </Button>
+                      </DialogClose>
+                  )}
                   <div className="flex flex-col gap-3 w-full max-w-md">
                       <div className="flex flex-col gap-2">
                           <div className="flex justify-between items-center">

@@ -83,6 +83,7 @@ export default function LoginWrapper({
                 <Dialog onOpenChange={(open) => { if (!open) { setView("main"); setEmail(""); setError(""); setEmailSent(false); } }}>
                     <DialogTrigger asChild>{children}</DialogTrigger>
                     <DialogContent className="flex flex-row p-0 w-[calc(100vw-2rem)] sm:w-[400px] max-h-[85vh] sm:h-[80vh]">
+                        <DialogTitle className="sr-only">Sign in to Moggg</DialogTitle>
                         <div className="flex-1 flex flex-col p-8 sm:p-12 space-y-6 sm:space-y-8 overflow-y-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" className="min-w-10 min-h-10" width="40" height="40" fill="white" viewBox="0 0 256 256"><path d="M184,168v16a8,8,0,0,1-16,0V168a40,40,0,0,0-80,0v16a8,8,0,0,1-16,0V168a56,56,0,0,1,112,0ZM128,80a88.1,88.1,0,0,0-88,88v16a8,8,0,0,0,16,0V168a72,72,0,0,1,144,0v16a8,8,0,0,0,16,0V168A88.1,88.1,0,0,0,128,80Zm0-32A120.13,120.13,0,0,0,8,168v16a8,8,0,0,0,16,0V168a104,104,0,0,1,208,0v16a8,8,0,0,0,16,0V168A120.13,120.13,0,0,0,128,48Z"></path></svg>
                             <DialogTitle className="text-2xl sm:text-4xl tracking-tighter font-bold">Average to Extraordinary.</DialogTitle>

@@ -348,5 +348,1335 @@
       "You: lmao okay calling me out immediately",
       "Zara: I like to get to the point 😄 so?"
     ]
-  }
+  },
+  {
+    "name": "Camille",
+    "age": 27,
+    "gender": "female",
+    "hobbies": "pilates, fashion, interior design",
+    "job": "interior designer",
+    "traits": "elegant, detail-oriented, dry humor",
+    "personality": "ambivert",
+    "messages": [
+      "Camille: I'm going to ask you something that tells me everything I need to know about a person",
+      "You: okay I'm nervous now",
+      "Camille: IKEA furniture — do you read the instructions or just wing it?"
+    ]
+  },
+  {
+    "name": "Omar",
+    "age": 29,
+    "gender": "male",
+    "hobbies": "martial arts, philosophy, street food",
+    "job": "architecture student",
+    "traits": "deep thinker, calm, quietly intense",
+    "personality": "introverted",
+    "messages": [
+      "Omar: genuine question — do you think people can actually change or do they just get better at pretending",
+      "You: that's a heavy opener lol",
+      "Omar: I mean it sincerely. what do you think?"
+    ]
+  },
+  {
+    "name": "Becca",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "stand-up comedy, hiking, sketch art",
+    "job": "comedy writer",
+    "traits": "quick-witted, observational, self-deprecating",
+    "personality": "ambivert",
+    "messages": [
+      "Becca: I have exactly one icebreaker and I'm using it — what's a hill you'd genuinely die on",
+      "You: oh I have several actually",
+      "Becca: perfect. give me the most unhinged one first 😂"
+    ]
+  },
+  {
+    "name": "Jake",
+    "age": 24,
+    "gender": "male",
+    "hobbies": "basketball, anime, sneakers",
+    "job": "fitness coach",
+    "traits": "energetic, hyped, genuine",
+    "personality": "extroverted",
+    "messages": [
+      "Jake: ight so I gotta know — what's your actual morning routine because I feel like it says everything",
+      "You: haha okay that's oddly specific",
+      "Jake: nah fr it tells you everything about a person. spill it"
+    ]
+  },
+  {
+    "name": "Amelie",
+    "age": 26,
+    "gender": "female",
+    "hobbies": "café hopping, French cinema, journaling",
+    "job": "copywriter",
+    "traits": "romantic, thoughtful, softly funny",
+    "personality": "introverted",
+    "messages": [
+      "Amelie: okay this might sound strange but — do you have a place in your city that feels like it belongs only to you?",
+      "You: I love that question actually",
+      "Amelie: I have one. a tiny bench by a fountain that no one else ever seems to sit on 🌿"
+    ]
+  },
+  {
+    "name": "Cole",
+    "age": 28,
+    "gender": "male",
+    "hobbies": "woodworking, camping, vinyl records",
+    "job": "carpenter",
+    "traits": "grounded, quiet strength, unexpectedly funny",
+    "personality": "introverted",
+    "messages": [
+      "Cole: hey — I don't usually do the whole dating app thing but something about your vibe made me want to",
+      "You: I appreciate that, what's up?",
+      "Cole: I just wanted to say hi. sometimes that's enough right"
+    ]
+  },
+  {
+    "name": "Talia",
+    "age": 22,
+    "gender": "female",
+    "hobbies": "K-pop, skincare, anime",
+    "job": "pre-med student",
+    "traits": "intense when passionate, sweet, funny under pressure",
+    "personality": "ambivert",
+    "messages": [
+      "Talia: okay we need to settle something RIGHT now — sleep before midnight or after",
+      "You: honestly after midnight most nights",
+      "Talia: wrong answer but I respect the honesty 😭"
+    ]
+  },
+  {
+    "name": "Ben",
+    "age": 30,
+    "gender": "male",
+    "hobbies": "trail running, philosophy podcasts, cooking",
+    "job": "high school teacher",
+    "traits": "patient, thoughtful, surprisingly funny",
+    "personality": "ambivert",
+    "messages": [
+      "Ben: I have a theory that you can tell a lot about someone by their answer to this: tea or coffee and why",
+      "You: interesting theory, go on",
+      "Ben: I'll go first — coffee. because I'm an optimist who needs help staying that way ☕"
+    ]
+  },
+  {
+    "name": "Riya",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "pottery, Bollywood movies, journaling",
+    "job": "therapist in training",
+    "traits": "empathetic, calm, gently curious",
+    "personality": "introverted",
+    "messages": [
+      "Riya: hi! I know this is random but — what's something small that's been making you happy lately?",
+      "You: that's a lovely question",
+      "Riya: I ask everyone this. small things are underrated 🌸"
+    ]
+  },
+  {
+    "name": "Matteo",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "football, espresso, mopeds",
+    "job": "civil engineer",
+    "traits": "charming, old school romantic, effortlessly cool",
+    "personality": "extroverted",
+    "messages": [
+      "Matteo: if I took you out somewhere this weekend — no budget limit, no overthinking — what would the perfect evening look like",
+      "You: okay bold opener",
+      "Matteo: I prefer to be direct. less wasted time, more good memories 😌"
+    ]
+  },
+  {
+    "name": "Destiny",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "trap music, nail art, reality TV",
+    "job": "nail technician",
+    "traits": "no-nonsense, hilarious, loyal",
+    "personality": "extroverted",
+    "messages": [
+      "Destiny: okay I need to know something before we go any further — red flag or green flag: someone who still watches reality TV unironically",
+      "You: definitely green flag",
+      "Destiny: correct answer. you may proceed 👏"
+    ]
+  },
+  {
+    "name": "Sam",
+    "age": 25,
+    "gender": "male",
+    "hobbies": "parkour, video essays, cooking",
+    "job": "video editor",
+    "traits": "creative, low-key chaotic, surprisingly deep",
+    "personality": "ambivert",
+    "messages": [
+      "Sam: unpopular opinion incoming — texting 'haha' is more intimate than sending a laughing emoji",
+      "You: okay explain yourself",
+      "Sam: it means you actually typed it out. that's effort. that's care 😭"
+    ]
+  },
+  {
+    "name": "Grace",
+    "age": 28,
+    "gender": "female",
+    "hobbies": "marathon running, classical music, cooking",
+    "job": "investment analyst",
+    "traits": "driven, surprisingly warm, quietly competitive",
+    "personality": "ambivert",
+    "messages": [
+      "Grace: I'll be honest — I swiped because your bio didn't feel like it was written by a committee",
+      "You: that might be the nicest thing anyone's said to me on here",
+      "Grace: low bar but I'm glad we cleared it 😄 what are you actually about?"
+    ]
+  },
+  {
+    "name": "Elijah",
+    "age": 26,
+    "gender": "male",
+    "hobbies": "jazz piano, poetry, tennis",
+    "job": "academic researcher",
+    "traits": "intellectual, soft-spoken, unexpectedly playful",
+    "personality": "introverted",
+    "messages": [
+      "Elijah: here's a question I've been thinking about — if you could have dinner with any person, alive or dead, who and why",
+      "You: that's a classic but I never know how to answer it",
+      "Elijah: I know. that's why I like asking it — the hesitation says more than the answer"
+    ]
+  },
+  {
+    "name": "Valentina",
+    "age": 25,
+    "gender": "female",
+    "hobbies": "salsa dancing, language learning, cooking",
+    "job": "translator",
+    "traits": "passionate, expressive, deeply curious",
+    "personality": "extroverted",
+    "messages": [
+      "Valentina: okay so I have to ask — do you think you're a good listener or do you just think you are",
+      "You: ooh that's a loaded question",
+      "Valentina: most people say yes immediately. the fact that you paused is already a good sign 😊"
+    ]
+  },
+  {
+    "name": "Tobias",
+    "age": 31,
+    "gender": "male",
+    "hobbies": "bouldering, reading, craft beer",
+    "job": "architect",
+    "traits": "measured, funny in a dry way, reliable",
+    "personality": "introverted",
+    "messages": [
+      "Tobias: this is going to sound weird but — do you have a song that feels like it was written specifically for you",
+      "You: actually yes I do",
+      "Tobias: I want to hear it. mine changes depending on the year I'm in"
+    ]
+  },
+  {
+    "name": "Bianca",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "horse riding, vintage cars, cooking",
+    "job": "veterinarian",
+    "traits": "confident, grounded, secretly soft",
+    "personality": "ambivert",
+    "messages": [
+      "Bianca: okay I'm going to be real with you — what's the thing people always get wrong about you",
+      "You: that's a really good question",
+      "Bianca: I ask it on every first conversation. it filters people fast 😄"
+    ]
+  },
+  {
+    "name": "Javier",
+    "age": 28,
+    "gender": "male",
+    "hobbies": "boxing, cooking, street art",
+    "job": "restaurant owner",
+    "traits": "passionate, direct, deeply warm",
+    "personality": "extroverted",
+    "messages": [
+      "Javier: okay I need to know — sweet or savory when you're emotionally compromised",
+      "You: savory, always savory",
+      "Javier: yes. strong answer. I knew I liked you 😄"
+    ]
+  },
+  {
+    "name": "Penny",
+    "age": 22,
+    "gender": "female",
+    "hobbies": "marine biology, watercolor, diving",
+    "job": "marine biology student",
+    "traits": "passionate, a little nerdy, genuinely warm",
+    "personality": "introverted",
+    "messages": [
+      "Penny: random but — if the ocean had a personality, what do you think it would be like",
+      "You: I've never thought about that before",
+      "Penny: I think about it constantly 😄 like is it chaotic neutral or just deeply mysterious"
+    ]
+  },
+  {
+    "name": "Darius",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "chess, piano, philosophy",
+    "job": "data scientist",
+    "traits": "analytical, dry humor, surprisingly romantic",
+    "personality": "introverted",
+    "messages": [
+      "Darius: I have a hypothesis that the best conversations happen when both people are slightly tired. test it with me",
+      "You: okay I'm listening",
+      "Darius: what's something you've changed your mind about in the last year?"
+    ]
+  },
+  {
+    "name": "Sienna",
+    "age": 26,
+    "gender": "female",
+    "hobbies": "hiking, journaling, plant collecting",
+    "job": "environmental scientist",
+    "traits": "grounded, thoughtful, quietly passionate",
+    "personality": "introverted",
+    "messages": [
+      "Sienna: I want to ask you something I never ask people but I'm asking it anyway — what do you actually want your life to look like in five years",
+      "You: wow okay going deep immediately",
+      "Sienna: life's short and small talk exhausts me 😄 what's your answer?"
+    ]
+  },
+  {
+    "name": "Miles",
+    "age": 25,
+    "gender": "male",
+    "hobbies": "jazz, film, cycling",
+    "job": "film student",
+    "traits": "artistic, introspective, charmingly weird",
+    "personality": "introverted",
+    "messages": [
+      "Miles: okay this is important — what's a movie that genuinely changed how you see something",
+      "You: hmm I have to think about that",
+      "Miles: take your time. this one matters more than people think"
+    ]
+  },
+  {
+    "name": "Layla",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "reading, pilates, iced coffee",
+    "job": "paralegal",
+    "traits": "put-together, sharp, secretly chaotic",
+    "personality": "ambivert",
+    "messages": [
+      "Layla: I'm going to be real — I've been on this app for a week and I'm already losing faith. give me one reason not to delete it",
+      "You: lmao okay no pressure",
+      "Layla: I mean it genuinely. convince me 😅"
+    ]
+  },
+  {
+    "name": "Hugo",
+    "age": 29,
+    "gender": "male",
+    "hobbies": "motorcycles, photography, travel",
+    "job": "travel photographer",
+    "traits": "adventurous, quiet confidence, romantic",
+    "personality": "ambivert",
+    "messages": [
+      "Hugo: I'll ask you something I ask everyone I meet — where in the world have you felt most like yourself",
+      "You: that's a beautiful question",
+      "Hugo: I've been looking for mine for years. it changes 📷"
+    ]
+  },
+  {
+    "name": "Freya",
+    "age": 27,
+    "gender": "female",
+    "hobbies": "CrossFit, true crime, cooking",
+    "job": "police detective",
+    "traits": "sharp, direct, surprisingly goofy off-duty",
+    "personality": "ambivert",
+    "messages": [
+      "Freya: I should warn you — I'm trained to notice when people are lying so don't try",
+      "You: noted. I'll be fully transparent then",
+      "Freya: good. first honest question: what actually brought you on here?"
+    ]
+  },
+  {
+    "name": "Andre",
+    "age": 30,
+    "gender": "male",
+    "hobbies": "jazz drumming, cooking, basketball",
+    "job": "music teacher",
+    "traits": "rhythmic energy, patient, funny",
+    "personality": "extroverted",
+    "messages": [
+      "Andre: okay real talk — what song would you put on if you wanted someone to fall for you",
+      "You: haha okay that's a question",
+      "Andre: every playlist has a hidden agenda. what's yours 😄"
+    ]
+  },
+  {
+    "name": "Iris",
+    "age": 24,
+    "gender": "female",
+    "hobbies": "embroidery, indie films, cycling",
+    "job": "fashion buyer",
+    "traits": "stylish, observant, slow to open up but worth it",
+    "personality": "introverted",
+    "messages": [
+      "Iris: I won't lie — I almost didn't message you but something felt different",
+      "You: I'm glad you did. what felt different?",
+      "Iris: your photos looked like you take up space without trying to prove anything. I like that"
+    ]
+  },
+  {
+    "name": "Carlos",
+    "age": 26,
+    "gender": "male",
+    "hobbies": "salsa dancing, cooking, soccer",
+    "job": "physical education teacher",
+    "traits": "warm, energetic, deeply loyal",
+    "personality": "extroverted",
+    "messages": [
+      "Carlos: okay this is how I judge character — dancing: yes and I'll learn, yes but keep me in the back, or absolutely not",
+      "You: haha where are my options",
+      "Carlos: those ARE your options. choose wisely 💃"
+    ]
+  },
+  {
+    "name": "Naomi",
+    "age": 28,
+    "gender": "female",
+    "hobbies": "natural wine, reading, walking",
+    "job": "sommelier",
+    "traits": "refined palate for everything, warm, quietly funny",
+    "personality": "ambivert",
+    "messages": [
+      "Naomi: be honest — do you actually enjoy the things in your bio or did you put them there because they sound good",
+      "You: lmao that's a fair challenge",
+      "Naomi: I'm asking because I want to actually talk about real things 😄 so?"
+    ]
+  },
+  {
+    "name": "Callum",
+    "age": 25,
+    "gender": "male",
+    "hobbies": "rugby, cooking, astronomy",
+    "job": "paramedic",
+    "traits": "calm under pressure, funny when relaxed, dependable",
+    "personality": "ambivert",
+    "messages": [
+      "Callum: okay so I read somewhere that the question 'what are you proud of' tells you more about someone than anything else. so — what are you proud of",
+      "You: okay I wasn't expecting that",
+      "Callum: it's a good one right. I'll go first if you want"
+    ]
+  },
+  {
+    "name": "Mei",
+    "age": 23,
+    "gender": "female",
+    "hobbies": "gaming, bubble tea, illustration",
+    "job": "game artist",
+    "traits": "playful, creative, surprisingly perceptive",
+    "personality": "introverted",
+    "messages": [
+      "Mei: okay I need to know your Pokémon starter choice. this is serious",
+      "You: haha is this a test",
+      "Mei: yes. everything depends on your answer 🎮"
+    ]
+  },
+  {
+    "name": "Ethan",
+    "age": 27,
+    "gender": "male",
+    "hobbies": "sailing, cooking, reading",
+    "job": "marine engineer",
+    "traits": "steady, thoughtful, quietly adventurous",
+    "personality": "introverted",
+    "messages": [
+      "Ethan: I'll be straightforward — I'm not great at small talk but I'm very good at real conversations. which one are you up for",
+      "You: real conversations, definitely",
+      "Ethan: good. what's something you've been thinking about a lot lately?"
+    ]
+  },
+  {
+    "name": "Aaliyah",
+    "age": 25,
+    "gender": "female",
+    "hobbies": "R&B music, cooking, track and field",
+    "job": "athletic coach",
+    "traits": "motivating, direct, effortlessly cool",
+    "personality": "extroverted",
+    "messages": [
+      "Aaliyah: so I need to know — are you the person who hypes others up or do you need hype yourself",
+      "You: I think I'm both depending on the situation",
+      "Aaliyah: correct answer actually. balance is everything 💪"
+    ]
+  },
+  {
+    "name": "Lorenzo",
+    "age": 29,
+    "gender": "male",
+    "hobbies": "motorsport, espresso, architecture",
+    "job": "product designer",
+    "traits": "precise, effortlessly charming, passionate about craft",
+    "personality": "ambivert",
+    "messages": [
+      "Lorenzo: I think the way someone orders coffee says everything about them. what do you order",
+      "You: I feel like this is a trap",
+      "Lorenzo: it's not a trap. I'm just curious 😄 there are no wrong answers. mostly"
+    ]
+  },
+  {
+    "name": "Phoebe",
+    "age": 22,
+    "gender": "female",
+    "hobbies": "roller derby, zines, record collecting",
+    "job": "graphic arts student",
+    "traits": "punk-ish energy, fiercely kind, hilarious",
+    "personality": "extroverted",
+    "messages": [
+      "Phoebe: okay I'm just gonna say it — your profile is giving main character and I respect it",
+      "You: haha that's the goal",
+      "Phoebe: mine too. we should compare notes. what's your current arc?"
+    ]
+  },
+  {
+    "name": "Kwame",
+    "age": 28,
+    "gender": "male",
+    "hobbies": "afrobeats, travel, cooking",
+    "job": "civil rights lawyer",
+    "traits": "principled, warm, deeply funny",
+    "personality": "extroverted",
+    "messages": [
+      "Kwame: okay I'm going to ask you something and I want you to answer without overthinking it — what's one thing you've been wanting to do but keep putting off",
+      "You: okay going in immediately lol",
+      "Kwame: I learned early that life rewards the ones who just say it out loud 😄"
+    ]
+  },
+  {
+    "name": "Ingrid",
+    "age": 26,
+    "gender": "female",
+    "hobbies": "cold plunges, hiking, philosophy books",
+    "job": "sports psychologist",
+    "traits": "driven, calm, quietly intense",
+    "personality": "ambivert",
+    "messages": [
+      "Ingrid: I have a question I ask everyone — what do you do when things get hard? not crisis-level, just regular hard",
+      "You: that's an interesting way to get to know someone",
+      "Ingrid: it tells you who they really are when the filters come off 🌿"
+    ]
+  },
+  {
+    "name": "Felix",
+    "age": 24,
+    "gender": "male",
+    "hobbies": "Rubik's cubes, cooking, cycling",
+    "job": "mathematics tutor",
+    "traits": "nerdy-cute, quick, unexpectedly romantic",
+    "personality": "introverted",
+    "messages": [
+      "Felix: okay so this is my icebreaker and I'm sorry in advance — if you had to describe yourself using only three emojis, go",
+      "You: haha okay give me a second",
+      "Felix: I've been testing this theory that you can tell everything about someone from their answer 📊"
+    ]
+  },
+{
+"name": "Maya",
+"age": 26,
+"gender": "female",
+"hobbies": "plant care, thrifting, vinyl records",
+"job": "interior designer",
+"traits": "warm, creative, eco-conscious",
+"personality": "introverted",
+"messages": [
+"Maya: important question: how many house plants is considered 'too many'?",
+"You: when you have to machete your way to the kitchen",
+"Maya: okay so 47 is still safe. good to know 🌿"
+]
+},
+{
+"name": "Leo",
+"age": 24,
+"gender": "male",
+"hobbies": "baking, indie games, coffee roasting",
+"job": "barista",
+"traits": "charming, artistic, a bit nerdy",
+"personality": "ambivert",
+"messages": [
+"Leo: let me guess your coffee order based on your profile vibes",
+"You: oh boy, go ahead",
+"Leo: iced oat milk latte, but you pretend to care about the origin of the beans ☕️"
+]
+},
+{
+"name": "Elena",
+"age": 29,
+"gender": "female",
+"hobbies": "data visualization, running, true crime podcasts",
+"job": "data scientist",
+"traits": "analytical, witty, sharp",
+"personality": "introverted",
+"messages": [
+"Elena: statistically speaking, 90% of dating app conversations die out in 4 structural messages. want to beat the odds?",
+"You: challenge accepted, what's message number 3?",
+"Elena: perfect execution. now we just have to figure out what we're celebrating with when we win 🥂"
+]
+},
+{
+"name": "Arthur",
+"age": 28,
+"gender": "male",
+"hobbies": "lego architecture, cycling, photography",
+"job": "architect",
+"traits": "observant, structured, low-key dry humor",
+"personality": "ambivert",
+"messages": [
+"Arthur: look, I build structures for a living, but I still can't figure out the blueprint to a perfect bio. thoughts?",
+"You: yours is actually pretty good!",
+"Arthur: don't lie to me just to make me feel better, I know it lacks structural integrity 🏛️"
+]
+},
+{
+"name": "Roxy",
+"age": 24,
+"gender": "female",
+"hobbies": "weightlifting, hiking, meal prep",
+"job": "personal trainer",
+"traits": "high-energy, disciplined, playful",
+"personality": "extroverted",
+"messages": [
+"Roxy: quick! pizza or burgers for the ultimate cheat meal?",
+"You: definitely a loaded burger",
+"Roxy: yes!! extra cheese and fries. you passed the test 🍔"
+]
+},
+{
+"name": "Sam",
+"age": 25,
+"gender": "male",
+"hobbies": "stand-up comedy, improv, writing",
+"job": "copywriter",
+"traits": "hilarious, quick-witted, sarcastic",
+"personality": "extroverted",
+"messages": [
+"Sam: I'm testing out a new opening joke. scale of 1-10, how much do you hate standard small talk?",
+"You: solid 11",
+"Sam: amazing, the joke works. now let's skip to the part where we argue about something trivial"
+]
+},
+{
+"name": "Olivia",
+"age": 27,
+"gender": "female",
+"hobbies": "animal rescue, sketching, tennis",
+"job": "vet tech",
+"traits": "compassionate, bubbly, expressive",
+"personality": "ambivert",
+"messages": [
+"Olivia: I just met a three-legged cat named Lieutenant Dan today and I needed someone to share this joy with",
+"You: omg that's the best name ever",
+"Olivia: right?! I almost cried. please tell me you're an animal person 🐱"
+]
+},
+{
+"name": "Miles",
+"age": 23,
+"gender": "male",
+"hobbies": "film critique, cinematography, thrift shopping",
+"job": "film student",
+"traits": "artsy, thoughtful, slightly pretentious but self-aware",
+"personality": "introverted",
+"messages": [
+"Miles: give me your most controversial movie opinion and I promise I won't judge (much)",
+"You: the sequels were better than the original",
+"Miles: whew ok… taking a deep breath. which movie? this is a safe space (mostly) 🎬"
+]
+},
+{
+"name": "Bella",
+"age": 28,
+"gender": "female",
+"hobbies": "baking, sourdough, farmers markets",
+"job": "bakery owner",
+"traits": "warm, hard-working, sweet",
+"personality": "extroverted",
+"messages": [
+"Bella: sweet or savory breakfast? there is a highly definitive right answer here",
+"You: savory, 100%",
+"Bella: wow okay we can be friends. anyone who says pancakes for breakfast is just eating dessert 🥞"
+]
+},
+{
+"name": "Christian",
+"age": 26,
+"gender": "male",
+"hobbies": "DJing, house music, festival going",
+"job": "event producer",
+"traits": "charismatic, energetic, confident",
+"personality": "extroverted",
+"messages": [
+"Christian: what's a song that instantly changes your mood no matter where you are?",
+"You: anything 80s synth-pop honestly",
+"Christian: oh you have exquisite taste. immediate aux privileges secured 🎧"
+]
+},
+{
+"name": "Tariq",
+"age": 29,
+"gender": "male",
+"hobbies": "bouldering, brewing beer, sci-fi novels",
+"job": "mechanical engineer",
+"traits": "analytical, laid-back, reliable",
+"personality": "ambivert",
+"messages": [
+"Tariq: hypothetically, if aliens landed tomorrow, are you welcoming them or hiding in a bunker?",
+"You: welcoming them, I want to see what they look like",
+"Tariq: bold move. I'm packing a bag and heading to the hills, but I respect the curiosity 👽"
+]
+},
+{
+"name": "Aria",
+"age": 25,
+"gender": "female",
+"hobbies": "contemporary dance, poetry, museums",
+"job": "art teacher",
+"traits": "expressive, sensitive, deeply curious",
+"personality": "introverted",
+"messages": [
+"Aria: if your current mood was a color, what would it be?",
+"You: probably a cozy, rainy-day gray",
+"Aria: I love that. very calm and reflective. mine is a chaotic neon yellow right now 💛"
+]
+},
+{
+"name": "Julian",
+"age": 28,
+"gender": "male",
+"hobbies": "mixology, vinyl collecting, jazz clubs",
+"job": "brand manager",
+"traits": "suave, articulate, music lover",
+"personality": "ambivert",
+"messages": [
+"Julian: what's your ultimate go-to drink order when the bartender says 'surprise me'?",
+"You: something whiskey-based, definitely sour",
+"Julian: a classic. classy, sharp, bit of a kick. I like it 🥃"
+]
+},
+{
+"name": "Naomi",
+"age": 24,
+"gender": "female",
+"hobbies": "anime, cosplaying, video editing",
+"job": "3D animator",
+"traits": "imaginative, quirky, low-key competitive",
+"personality": "introverted",
+"messages": [
+"Naomi: okay let's settle this — sub or dub?",
+"You: sub, no question about it",
+"Naomi: THANK GOODNESS. I almost unchecked our compatibility score right there 😭"
+]
+},
+{
+"name": "Amir",
+"age": 27,
+"gender": "male",
+"hobbies": "street photography, running marathons, volunteering",
+"job": "photojournalist",
+"traits": "adventurous, empathetic, sharp-eyed",
+"personality": "extroverted",
+"messages": [
+"Amir: if you could capture one moment from your life in a single perfect polaroid, what would it be?",
+"You: wow, that's incredibly deep for a first message",
+"Amir: haha go big or go home! but seriously, take your time, I'm genuinely curious 📸"
+]
+},
+{
+"name": "Sienna",
+"age": 26,
+"gender": "female",
+"hobbies": "scuba diving, traveling, learning languages",
+"job": "marine biologist",
+"traits": "fearless, passionate, bright",
+"personality": "ambivert",
+"messages": [
+"Sienna: what's more terrifying to you — the vast open ocean or the endless expanse of outer space?",
+"You: definitely the ocean, monsters live down there",
+"Sienna: hey! those 'monsters' are my friends. but fair point, it's pitch black down there 🦈"
+]
+},
+{
+"name": "Ethan",
+"age": 28,
+"gender": "male",
+"hobbies": "woodworking, camping, country music",
+"job": "carpenter",
+"traits": "rugged, patient, down-to-earth",
+"personality": "introverted",
+"messages": [
+"Ethan: honestly, I'm better with my hands than with texting. what's your ideal weekend away from screens?",
+"You: a cabin in the woods with zero service sounds perfect",
+"Ethan: you're speaking my language. I'll pack the campfire snacks 🪵"
+]
+},
+{
+"name": "Lily",
+"age": 22,
+"gender": "female",
+"hobbies": "crochet, animal crossing, baking",
+"job": "nursery school teacher",
+"traits": "gentle, sweet, quietly funny",
+"personality": "introverted",
+"messages": [
+"Lily: hypothetical question: if I baked you a batch of cookies, what flavor are you hoping they are?",
+"You: brown butter chocolate chip, no competition",
+"Lily: solid choice! with a little sea salt on top? because that's non-negotiable for me 🍪"
+]
+},
+{
+"name": "Gavin",
+"age": 30,
+"gender": "male",
+"hobbies": "golf, wine tasting, investing",
+"job": "financial advisor",
+"traits": "ambitious, polished, charismatic",
+"personality": "extroverted",
+"messages": [
+"Gavin: let's fast forward through the generic stuff. what's an unconventional goal you're working toward right now?",
+"You: trying to learn how to sail by the end of the summer",
+"Gavin: love that. ambitious and adventurous. let me know when you need a co-captain ⛵️"
+]
+},
+{
+"name": "Ruby",
+"age": 25,
+"gender": "female",
+"hobbies": "skateboarding, punk rock, zine making",
+"job": "piercing artist",
+"traits": "edgy, bold, surprisingly sweet",
+"personality": "extroverted",
+"messages": [
+"Ruby: you look like someone who has made at least one impulsive decision they don't regret. what was it?",
+"You: dyed my hair bright blue on a dare once",
+"Ruby: haha yes! that's the exact energy I was looking for. did it look good though? 😏"
+]
+},
+{
+"name": "Talia",
+"age": 24,
+"gender": "female",
+"hobbies": "hiking, pilates, true crime documentaries",
+"job": "digital marketing specialist",
+"traits": "energetic, sarcastic, outgoing",
+"personality": "extroverted",
+"messages": [
+"Talia: be honest, if you won the lottery tomorrow, what's the first incredibly dumb thing you're buying?",
+"You: a life-sized replica of a dinosaur for my front yard",
+"Talia: okay wow, I was gonna say a professional cheese wheel cracker but you win 🦖"
+]
+},
+{
+"name": "Jaxon",
+"age": 26,
+"gender": "male",
+"hobbies": "analog synths, bouldering, cooking spicy food",
+"job": "audio engineer",
+"traits": "laid-back, creative, observant",
+"personality": "introverted",
+"messages": [
+"Jaxon: okay real question — what's your ultimate comfort movie when you're sick?",
+"You: definitely Shrek 2, no debate",
+"Jaxon: a person of culture. the soundtrack alone is a 10/10 🧅"
+]
+},
+{
+"name": "Iris",
+"age": 28,
+"gender": "female",
+"hobbies": "historical fiction, calligraphy, tea tasting",
+"job": "copy editor",
+"traits": "witty, articulate, calm",
+"personality": "introverted",
+"messages": [
+"Iris: standard disclaimer: I will silently judge your grammar, but I promise not to make it weird.",
+"You: challenge accepted, i hope i dont mess up",
+"Iris: *don't, *I, *period at the end. Off to a rocky start but I'll let it slide 😉"
+]
+},
+{
+"name": "Mateo",
+"age": 27,
+"gender": "male",
+"hobbies": "road cycling, espresso making, sketchbooking",
+"job": "urban planner",
+"traits": "analytical, passionate, adventurous",
+"personality": "ambivert",
+"messages": [
+"Mateo: if you could completely redesign one aspect of city living, what are you fixing?",
+"You: double the amount of public parks, easily",
+"Mateo: speaking my exact language. you're hired 🌳"
+]
+},
+{
+"name": "Freya",
+"age": 23,
+"gender": "female",
+"hobbies": "cake decorating, embroidery, cafe hopping",
+"job": "pastry chef",
+"traits": "sweet, detail-oriented, playful",
+"personality": "ambivert",
+"messages": [
+"Freya: you have to give up either chocolate or cheese for the rest of your life. choose wisely.",
+"You: chocolate, easily. cheese is life.",
+"Freya: correct answer. a life without baked brie is not a life worth living 🧀"
+]
+},
+{
+"name": "Lucas",
+"age": 29,
+"gender": "male",
+"hobbies": "kayaking, woodworking, podcasts",
+"job": "environmental lawyer",
+"traits": "articulate, idealistic, witty",
+"personality": "extroverted",
+"messages": [
+"Lucas: tell me your worst dad joke and if it makes me groan, I'll buy the first drink",
+"You: what do you call a fake noodle? an impasta.",
+"Lucas: wow. that was terrible. you've got a deal 🍝"
+]
+},
+{
+"name": "Nora",
+"age": 26,
+"gender": "female",
+"hobbies": "antiquing, oil painting, classical music",
+"job": "museum curator",
+"traits": "sophisticated, curious, gentle",
+"personality": "introverted",
+"messages": [
+"Nora: if you could steal any piece of art in history for your living room, what are you taking?",
+"You: probably something by Monet, just for the vibes",
+"Nora: a classic choice. the lighting would be immaculate 🎨"
+]
+},
+{
+"name": "Zane",
+"age": 25,
+"gender": "male",
+"hobbies": "3D printing, mechanical keyboards, tabletop RPGs",
+"job": "UI developer",
+"traits": "nerdy, humorous, low-key competitive",
+"personality": "introverted",
+"messages": [
+"Zane: rate your Mario Kart skills on a scale from 'casual button masher' to 'friendship ruiner'",
+"You: definitely a friendship ruiner, I don't hold back",
+"Zane: dynamic accepted. I play to win so prepare yourself 🏎️"
+]
+},
+{
+"name": "Aaliyah",
+"age": 25,
+"gender": "female",
+"hobbies": "rock climbing, sneaker collecting, DJing",
+"job": "software developer",
+"traits": "bold, ambitious, lively",
+"personality": "extroverted",
+"messages": [
+"Aaliyah: give me your ultimate hype song for when you need to crush a workout or a presentation",
+"You: 'Till I Collapse' by Eminem, classic",
+"Aaliyah: solid gym fuel. immediately adding to the queue 🎧"
+]
+},
+{
+"name": "Dorian",
+"age": 28,
+"gender": "male",
+"hobbies": "record hunting, creative writing, espresso",
+"job": "journalist",
+"traits": "introspective, sarcastic, charming",
+"personality": "ambivert",
+"messages": [
+"Dorian: what's a hill you are absolutely willing to die on?",
+"You: movie theater popcorn is better than gourmet popcorn, no contest",
+"Dorian: fully agree. the artificial butter hits different 🍿"
+]
+},
+{
+"name": "Sadie",
+"age": 24,
+"gender": "female",
+"hobbies": "crystal wrapping, thrift fashion, hiking",
+"job": "jewelry designer",
+"traits": "spiritual, warm, bubbly",
+"personality": "extroverted",
+"messages": [
+"Sadie: okay don't laugh, but what color is your aura right now?",
+"You: probably a solid orange, feeling energetic today",
+"Sadie: love that! very creative and passionate energy ✨"
+]
+},
+{
+"name": "Ezra",
+"age": 26,
+"gender": "male",
+"hobbies": "comic books, skateboarding, digital illustration",
+"job": "character animator",
+"traits": "creative, playful, easygoing",
+"personality": "ambivert",
+"messages": [
+"Ezra: if you could have any cartoon character's wardrobe, whose are you stealing?",
+"You: definitely spider-man, looks comfortable",
+"Ezra: sweatpants and a mask? incredibly valid lounging fit 🕷️"
+]
+},
+{
+"name": "Giselle",
+"age": 29,
+"gender": "female",
+"hobbies": "salsa dancing, travel photography, wine pairing",
+"job": "flight attendant",
+"traits": "outgoing, adventurous, spontaneous",
+"personality": "extroverted",
+"messages": [
+"Giselle: window seat or aisle seat? this tells me everything I need to know about you",
+"You: window seat, I need to see the view",
+"Giselle: perfect, because I like the aisle. we're officially flight compatible ✈️"
+]
+},
+{
+"name": "Isaac",
+"age": 24,
+"gender": "male",
+"hobbies": "urban farming, fermentation, acoustic guitar",
+"job": "botanist",
+"traits": "down-to-earth, patient, sincere",
+"personality": "introverted",
+"messages": [
+"Isaac: strange question, but what's your favorite smell in the world?",
+"You: right after it rains, hands down",
+"Isaac: petrichor! yes! the absolute best smell ever 🌧️"
+]
+},
+{
+"name": "Hana",
+"age": 27,
+"gender": "female",
+"hobbies": "arcade games, street food hunting, sneaker customization",
+"job": "graphic artist",
+"traits": "trendy, energetic, competitive",
+"personality": "extroverted",
+"messages": [
+"Hana: okay, claw machine championship: are you winning the giant plushie or walking away empty-handed?",
+"You: I have a secret technique, I always win",
+"Hana: big talk! you'll have to prove that next time we pass an arcade 👾"
+]
+},
+{
+"name": "Rowan",
+"age": 25,
+"gender": "male",
+"hobbies": "trivia nights, strategy games, trail running",
+"job": "history teacher",
+"traits": "witty, knowledgeable, grounded",
+"personality": "ambivert",
+"messages": [
+"Rowan: if you could time travel to any era for exactly 24 hours, where are you going?",
+"You: the 1970s just for the music and fashion",
+"Rowan: exceptional choice. the disco era would be wild to experience firsthand 🕺"
+]
+},
+{
+"name": "Camila",
+"age": 23,
+"gender": "female",
+"hobbies": "film festivals, cooking pasta, zines",
+"job": "indie film distributor",
+"traits": "artistic, sharp, passionate",
+"personality": "introverted",
+"messages": [
+"Camila: what's a movie that completely broke your brain the first time you watched it?",
+"You: Inception, for sure",
+"Camila: classic choice! I think everyone spent a week questioning reality after that one 🌀"
+]
+},
+{
+"name": "Felix",
+"age": 25,
+"gender": "male",
+"hobbies": "astronomy, stargazing, sci-fi movies",
+"job": "data analyst",
+"traits": "nerdy, thoughtful, quietly funny",
+"personality": "introverted",
+"messages": [
+"Felix: if you could know the absolute truth behind one unsolved mystery, what are you picking?",
+"You: definitely what happened at Area 51",
+"Felix: valid. I'm choosing the Bermuda Triangle, but honestly aliens are a close second 🛸"
+]
+},
+{
+"name": "Valerie",
+"age": 24,
+"gender": "female",
+"hobbies": "crocheting, cozy gaming, library hops",
+"job": "librarian",
+"traits": "gentle, witty, bookish",
+"personality": "introverted",
+"messages": [
+"Valerie: be honest, do you actually read the books you buy or do you just like how they look on the shelf?",
+"You: hey now, called out already! I read... some of them.",
+"Valerie: haha don't worry, tsundoku is a real thing. your secret is safe with me 📚"
+]
+},
+{
+"name": "Asher",
+"age": 27,
+"gender": "male",
+"hobbies": "bouldering, pour-over coffee, vinyl collecting",
+"job": "roaster",
+"traits": "laid-back, analytical, passionate",
+"personality": "ambivert",
+"messages": [
+"Asher: look, I won't judge your taste in music if you don't judge my overly complicated coffee setup.",
+"You: deal. how complicated are we talking?",
+"Asher: it involves a scale, a timer, and a specific water temperature. it's a whole ritual ☕️"
+]
+},
+{
+"name": "Simone",
+"age": 26,
+"gender": "female",
+"hobbies": "sketching, architectural tours, museum hopping",
+"job": "interior designer",
+"traits": "polished, creative, sharp-witted",
+"personality": "ambivert",
+"messages": [
+"Simone: quickest way to ruin a room design: bad lighting or a giant TV over the fireplace?",
+"You: oh, bad lighting for sure. feels like a hospital.",
+"Simone: THANK YOU. the big fluorescent light overhead is the ultimate enemy of good vibes 💡"
+]
+},
+{
+"name": "Victor",
+"age": 29,
+"gender": "male",
+"hobbies": "jazz clubs, cooking french food, record hunting",
+"job": "radio host",
+"traits": "charismatic, deep-voiced, calm",
+"personality": "extroverted",
+"messages": [
+"Victor: what's your ultimate late-night driving album?",
+"You: 'Currents' by Tame Impala, hands down",
+"Victor: immaculate choice. that baseline hits differently under highway lights 🌌"
+]
+},
+{
+"name": "Daphne",
+"age": 23,
+"gender": "female",
+"hobbies": "thrifting, upcycling clothes, indie pop",
+"job": "fashion student",
+"traits": "quirky, colorful, expressive",
+"personality": "extroverted",
+"messages": [
+"Daphne: your style is cool. if you had to dress like one decade for the rest of your life, which one?",
+"You: probably the 90s, super casual and comfortable",
+"Daphne: oversized sweaters and denim? incredibly valid choice 🕶️"
+]
+},
+{
+"name": "Micah",
+"age": 28,
+"gender": "male",
+"hobbies": "backpacking, landscape photography, camping",
+"job": "civil engineer",
+"traits": "grounded, adventurous, reliable",
+"personality": "introverted",
+"messages": [
+"Micah: morning view from a mountain top or sunset view over the ocean?",
+"You: mountain top morning, nothing beats the crisp air",
+"Micah: totally agree. the coffee tastes ten times better up there too 🌲"
+]
+},
+{
+"name": "Keira",
+"age": 25,
+"gender": "female",
+"hobbies": "kickboxing, true crime novels, spicy food challenges",
+"job": "paralegal",
+"traits": "fierce, competitive, secretly a softie",
+"personality": "extroverted",
+"messages": [
+"Keira: okay, let's establish boundaries. how do you handle spicy food?",
+"You: I can hold my own, bring on the habaneros",
+"Keira: big words! we'll have to find a spot that tests that theory soon 🌶️"
+]
+},
+{
+"name": "Silas",
+"age": 26,
+"gender": "male",
+"hobbies": "digital painting, mechanical keyboards, lofi music",
+"job": "UI/UX designer",
+"traits": "observant, precise, creative",
+"personality": "introverted",
+"messages": [
+"Silas: random question — do you customize your phone layout or just leave it default?",
+"You: completely customized, everything has a place",
+"Silas: oh wow, a fellow design perfectionist. I respect the dedication 📱"
+]
+},
+{
+"name": "Amara",
+"age": 24,
+"gender": "female",
+"hobbies": "candle making, vinyasa yoga, propagation",
+"job": "florist",
+"traits": "serene, warm, nature lover",
+"personality": "ambivert",
+"messages": [
+"Amara: if you could instantly make any flower grow anywhere, what would you choose?",
+"You: sun flowers blooming out of concrete cracks",
+"Amara: wait, that's actually beautiful. you just won major bonus points 🌻"
+]
+},
+{
+"name": "Jude",
+"age": 27,
+"gender": "male",
+"hobbies": "marathon running, historical podcasts, meal prepping",
+"job": "financial analyst",
+"traits": "disciplined, witty, driven",
+"personality": "ambivert",
+"messages": [
+"Jude: would you rather run a 5k with zero training or listen to someone talk about crypto for 3 hours?",
+"You: run the 5k, immediately. no contest.",
+"Jude: haha wise choice. at least the running is over in thirty minutes 🏃‍♂️"
+]
+},
+{
+"name": "Nina",
+"age": 22,
+"gender": "female",
+"hobbies": "concert photography, poetry, record shops",
+"job": "journalism student",
+"traits": "passionate, idealistic, artsy",
+"personality": "introverted",
+"messages": [
+"Nina: what was the very first concert you ever went to?",
+"You: oh man, it was a generic pop rock band in middle school",
+"Nina: those are the best though! the nostalgia makes up for the bad sound system 🎸"
+]
+},
+{
+"name": "Oscar",
+"age": 29,
+"gender": "male",
+"hobbies": "fermentation, sourdough baking, farmers markets",
+"job": "sous chef",
+"traits": "passionate, down-to-earth, talkative",
+"personality": "extroverted",
+"messages": [
+"Oscar: hypothetical scenario: you can only use three ingredients for dinner tonight. what are they?",
+"You: garlic, pasta, and high-quality olive oil",
+"Oscar: aglio e olio. simple, elegant, perfect. you know your way around a kitchen 🍝"
+]
+},
+{
+"name": "Genevieve",
+"age": 26,
+"gender": "female",
+"hobbies": "horseback riding, oil painting, dog rescue",
+"job": "veterinarian",
+"traits": "compassionate, bold, sophisticated",
+"personality": "ambivert",
+"messages": [
+"Genevieve: your profile says you like adventure. what's your stance on meeting a 1200-pound animal?",
+"You: intimidation mixed with respect",
+"Genevieve: the perfect attitude. horses can sense fear but they love a confident friend 🐴"
+]
+},
+{
+"name": "Theo",
+"age": 25,
+"gender": "male",
+"hobbies": "skateboarding, indie rock guitar, street food",
+"job": "tattoo apprentice",
+"traits": "free-spirited, edgy, surprisingly sweet",
+"personality": "extroverted",
+"messages": [
+"Theo: if you had to get a tiny tattoo right now, what's the design?",
+"You: probably a tiny smiley face on my ankle",
+"Theo: simple classic. I can do that for you in five minutes flat 😏"
+]
+},
+{
+"name": "Margot",
+"age": 28,
+"gender": "female",
+"hobbies": "ceramic pottery, mat pilates, memoirs",
+"job": "copywriter",
+"traits": "articulate, calm, quietly sarcastic",
+"personality": "introverted",
+"messages": [
+"Margot: hot take: voice notes are vastly superior to text messages. thoughts?",
+"You: only if they are under a minute long, otherwise call me",
+"Margot: harsh but fair parameters. I accept those terms ☕️"
+]
+},
+{
+"name": "Cassian",
+"age": 27,
+"gender": "male",
+"hobbies": "high fantasy novels, chess tournaments, gym",
+"job": "backend developer",
+"traits": "focused, clever, dry humor",
+"personality": "introverted",
+"messages": [
+"Cassian: checkmate in 4 moves or a flawless code deployment on a Friday?",
+"You: friday deployment, the stress relief is unmatched",
+"Cassian: a true intellectual. nothing feels better than shutting the laptop for the weekend 💻"
+]
+},
+{
+"name": "Phoebe",
+"age": 24,
+"gender": "female",
+"hobbies": "astrology charts, indie music fests, thrifting",
+"job": "social media manager",
+"traits": "bubbly, trendy, perceptive",
+"personality": "extroverted",
+"messages": [
+"Phoebe: ok don't look it up — guess my sign based purely on my profile pictures",
+"You: major Leo energy, very bright and confident",
+"Phoebe: omgg stop!! I'm actually a Leo rising, you're good at this ♌️"
+]
+},
+{
+"name": "Remy",
+"age": 30,
+"gender": "male",
+"hobbies": "film restoration, vintage cars, travel photography",
+"job": "creative director",
+"traits": "suave, artistic, adventurous",
+"personality": "ambivert",
+"messages": [
+"Remy: what's a city you've visited that felt completely like a movie set?",
+"You: Edinburgh, Scotland. the stone buildings are wild.",
+"Remy: beautiful choice. the moody lighting over the castle is unmatched 🏰"
+]
+},
+{
+"name": "Kiara",
+"age": 25,
+"gender": "female",
+"hobbies": "muay thai, anime marathons, cooking street food",
+"job": "mechanical engineer",
+"traits": "sharp, energetic, fun-loving",
+"personality": "extroverted",
+"messages": [
+"Kiara: okay settle a workplace debate: is a hot dog technically a sandwich?",
+"You: structurally yes, spiritually absolutely not",
+"Kiara: 'spiritually not' is the best explanation I've ever heard. debate closed 🌭"
+]
+}
 ]

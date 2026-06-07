@@ -262,6 +262,29 @@ Example output format:
                                 </span>
                             )}
                         </Button>
+
+                        {/* Sample results preview */}
+                        <div className="mt-8 space-y-4">
+                            <div>
+                                <h2 className="text-lg font-semibold">What you'll get</h2>
+                                <p className="text-sm text-muted-foreground mt-1">A detailed breakdown of your facial features — PSL score, symmetry, jawline, cheekbones, skin quality, and more — plus personalised improvement tips.</p>
+                            </div>
+                            <div className="grid gap-4">
+                                {[
+                                    { src: "/face1.png", label: "Overall Score & PSL Rating", desc: "See your overall attractiveness score and where you sit on the PSL scale from 1 (subhuman) to 8 (Tera Chad)." },
+                                    { src: "/face2.png", label: "Feature Breakdown", desc: "Individual scores for jawline, cheekbones, eye shape, skin quality, sexual dimorphism, and facial harmony." },
+                                    { src: "/face3.png", label: "Improvement Tips & Attraction Stats", desc: "Actionable tips to boost your looks, plus estimated attraction percentages across demographics." },
+                                ].map((item) => (
+                                    <div key={item.src} className="rounded-3xl bg-muted p-4 flex flex-col gap-3">
+                                        <img src={item.src} alt={item.label} className="w-full h-auto rounded-2xl object-contain" />
+                                        <div>
+                                            <p className="text-sm font-semibold">{item.label}</p>
+                                            <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <Card className="border-none">
