@@ -13,12 +13,48 @@ import FadeIn from "react-fade-in";
 import Image from "next/image";
 import { PurchaseContext, UserContext } from "@/app/rootprovider";
 
-function fileToDataUri(file: File): Promise<string> {
+// Helper function to stitch front and side photos together into one image
+async function stitchImages(file1: File, file2: File): Promise<string> {
     return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
+        // Use window.Image to avoid collision with Next.js 'Image' component import
+        const img1 = new window.Image();
+        const img2 = new window.Image();
+        let loadedCount = 0;
+
+        const onImageLoad = () => {
+            loadedCount++;
+            if (loadedCount === 2) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return reject(new Error("Failed to get canvas context"));
+
+                // Normalize height to 800px to keep payload slim and fast
+                const targetHeight = 800;
+                const scale1 = targetHeight / img1.height;
+                const scale2 = targetHeight / img2.height;
+
+                const w1 = img1.width * scale1;
+                const w2 = img2.width * scale2;
+
+                canvas.width = w1 + w2;
+                canvas.height = targetHeight;
+
+                // Draw images side-by-side (Front profile on left, Side profile on right)
+                ctx.drawImage(img1, 0, 0, w1, targetHeight);
+                ctx.drawImage(img2, w1, 0, w2, targetHeight);
+
+                // Convert to compressed JPEG data URL
+                resolve(canvas.toDataURL('image/jpeg', 0.85));
+            }
+        };
+
+        img1.onload = onImageLoad;
+        img2.onload = onImageLoad;
+        img1.onerror = reject;
+        img2.onerror = reject;
+
+        img1.src = URL.createObjectURL(file1);
+        img2.src = URL.createObjectURL(file2);
     });
 }
 
@@ -83,8 +119,10 @@ export default function FaceAnalysisPage() {
         setResult(null);
 
         try {
-            const [frontUri, sideUri] = await Promise.all([fileToDataUri(frontFile), fileToDataUri(sideFile)]);
+            // 1. Stitch both files side-by-side into a single canvas data URI image string
+            const combinedUri = await stitchImages(frontFile, sideFile);
 
+            // 2. Post the single combined image to your unified backend route
             const response = await fetch('/api/ai/vision', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -92,14 +130,14 @@ export default function FaceAnalysisPage() {
                     messages: [
                         {
                             role: "system",
-                            content: `You are an expert facial aesthetics analyst. The user will send you TWO photos of the same person: a front-facing photo and a side-facing (profile) photo. Use both images together to give a comprehensive analysis.
+                            content: `You are an expert facial aesthetics analyst. The user has provided an image containing two views of the same person stitched together side-by-side: a front-facing photo on the left and a side-facing (profile) photo on the right. Use both perspectives together to give a comprehensive analysis.
 
 You must respond with ONLY a valid JSON object — no markdown, no explanation, no extra text.
 
 JSON fields required:
 - score: integer 0-100 overall attractiveness score
 - potential: integer 0-100 maximum achievable score with improvements
-- jawline_score: integer 0-100 jawline definition and strength (use side photo heavily)
+- jawline_score: integer 0-100 jawline definition and strength (use side view heavily)
 - cheekbones: integer 0-100 cheekbone prominence and structure
 - skin_quality: integer 0-100 skin clarity, texture, and uniformity
 - dimorphism: integer 0-100 sexual dimorphism (masculine/feminine features appropriate for gender)
@@ -121,7 +159,7 @@ JSON fields required:
   * 7.0–7.75 = Giga Chad (barely perceivable flaws, top 0.1%)
   * 7.75–8.0 = True Adam / Tera Chad (theoretical genetic perfection, 0.001%)
 
-If the image quality is too poor, blurry, or the face is not clearly visible in either photo, respond with: {"error":"poor_image_quality","message":"<brief explanation of which photo is the issue and why>"}
+If the image quality is too poor, blurry, or the face is not clearly visible, respond with: {"error":"poor_image_quality","message":"The uploaded images are too blurry or poorly lit. Please upload a clearer face shot."}
 If no face is visible at all, respond with: {"error":"no_face_detected"}
 
 Example output format:
@@ -130,9 +168,8 @@ Example output format:
                         {
                             role: "user",
                             content: [
-                                { type: "text", text: "Here are my two photos for face analysis. The first image is my front-facing photo and the second is my side-facing (profile) photo. Please analyze both and return the JSON." },
-                                { type: "image_url", image_url: { url: frontUri } },
-                                { type: "image_url", image_url: { url: sideUri } }
+                                { type: "text", text: "Here is my side-by-side combined photo for face analysis. Left side is front view, right side is profile view. Please analyze and return JSON." },
+                                { type: "image_url", image_url: { url: combinedUri } }
                             ]
                         }
                     ]
@@ -199,7 +236,6 @@ Example output format:
                 {!result ? (
                     <div className="space-y-6">
                         <div className="grid gap-6 md:grid-cols-2">
-                            {/* Front Photo */}
                             {(["front", "side"] as const).map((slot) => {
                                 const preview = slot === "front" ? frontPreview : sidePreview;
                                 const label = slot === "front" ? "Front-Facing Photo" : "Side-Facing Photo";
@@ -270,7 +306,6 @@ Example output format:
                             )}
                         </Button>
 
-                        {/* Sample results preview */}
                         <div className="mt-8 space-y-4">
                             <div>
                                 <h2 className="text-lg font-semibold">What you'll get</h2>
@@ -310,7 +345,6 @@ Example output format:
                         </CardHeader>
 
                         <CardContent className="p-6 pt-0">
-                            {/* Share buttons */}
                             <div className="flex w-full justify-between mt-4">
                                 <Button variant={"outline"}>
                                     <DownloadCloudIcon />
@@ -333,7 +367,6 @@ Example output format:
                                 </div>
                             </div>
 
-                            {/* Preview thumbnails */}
                             <div className="flex justify-center gap-4 w-full mt-4">
                                 {frontPreview && (
                                     <div className="text-center">
@@ -349,7 +382,6 @@ Example output format:
                                 )}
                             </div>
 
-                            {/* Overall & Potential Scores */}
                             <FadeIn delay={100}>
                                 <div className="mt-6 grid grid-cols-2 gap-4">
                                     <div className="rounded-3xl p-5 bg-white/5 space-y-1">
@@ -371,7 +403,6 @@ Example output format:
                                 </div>
                             </FadeIn>
 
-                            {/* Feature Breakdown */}
                             <FadeIn delay={150}>
                                 <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
                                     <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Feature Breakdown</h3>
@@ -397,7 +428,6 @@ Example output format:
                                 </div>
                             </FadeIn>
 
-                            {/* Eye Details */}
                             {(result.eye_color || result.upper_eyelid_exposure || result.canthal_tilt) && (
                                 <FadeIn delay={175}>
                                     <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
@@ -430,10 +460,9 @@ Example output format:
                                 </FadeIn>
                             )}
 
-                            {/* PSL Scale */}
                             {result.psl_score != null && (() => {
                                 const tier = getPslTier(result.psl_score);
-                                const pslPct = ((result.psl_score - 1) / 7) * 100; // 1–8 mapped to 0–100%
+                                const pslPct = ((result.psl_score - 1) / 7) * 100;
                                 return (
                                     <FadeIn delay={200}>
                                         <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-3">
@@ -466,8 +495,6 @@ Example output format:
                                 );
                             })()}
 
-
-                            {/* Improvement Tips */}
                             {result.improvements && result.improvements.length > 0 && (
                                 <FadeIn delay={225}>
                                     <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
@@ -484,7 +511,6 @@ Example output format:
                                 </FadeIn>
                             )}
 
-                            {/* Most Attractive To */}
                             {result.racial_attraction && Object.keys(result.racial_attraction).length > 0 && (
                                 <div className="space-y-4 mt-8">
                                     <div>
