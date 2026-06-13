@@ -13,7 +13,6 @@ import FadeIn from "react-fade-in";
 import Image from "next/image";
 import { PurchaseContext, UserContext } from "@/app/rootprovider";
 
-// Helper function to stitch front and side photos together into one image
 async function stitchImages(file1: File, file2: File): Promise<string> {
     return new Promise((resolve, reject) => {
         const img1 = new window.Image();
@@ -124,33 +123,16 @@ export default function FaceAnalysisPage() {
                     messages: [
                         {
                             role: "system",
-                            content: `You are an expert facial aesthetics analyst. The user has provided an image containing two views of the same person stitched together side-by-side: a front-facing photo on the left and a side-facing (profile) photo on the right. Use both perspectives together to give a comprehensive analysis.
+                            content: `You are an expert facial aesthetics analyst. The user has provided an image containing two views of the same person stitched together side-by-side. 
+                            You must respond with ONLY a valid JSON object string. Do not include any markdown fences or extraneous conversational explanations.
 
-You must respond with ONLY a valid JSON object string wrapper — do not include any markdown backticks, explanations, or extraneous text outside the object layout.
-
-JSON fields required:
-- score: integer 0-100 overall attractiveness score
-- potential: integer 0-100 maximum achievable score with improvements
-- jawline_score: integer 0-100 jawline definition and strength (use side view heavily)
-- cheekbones: integer 0-100 cheekbone prominence and structure
-- skin_quality: integer 0-100 skin clarity, texture, and uniformity
-- dimorphism: integer 0-100 sexual dimorphism (masculine/feminine features appropriate for gender)
-- eyes: integer 0-100 eye shape, symmetry, and expressiveness
-- facial_harmony: integer 0-100 overall facial symmetry and proportions
-- eye_color: string — detected eye color (e.g. "Brown", "Blue", "Green", "Hazel", "Amber", "Gray", "Black")
-- upper_eyelid_exposure: string — one of exactly: "None", "Present", or "A lot"
-- canthal_tilt: string — one of exactly: "Positive", "Negative", or "Neutral"
-- improvements: array of 3-5 short actionable improvement tips as strings
-- racial_attraction: object with keys "Asian", "Caucasian", "Black", "Hispanic", "Middle Eastern", "South Asian" — each value is an integer 0-100 representing estimated % attraction from that group based on facial features and aesthetics
-- psl_score: a decimal number from 1.0 to 8.0 representing the PSL rating.
-
-If the image quality is too poor, blurry, or the face is not clearly visible, respond with: {"error":"poor_image_quality","message":"The uploaded images are too blurry or poorly lit. Please upload a clearer face shot."}
-If no face is visible at all, respond with: {"error":"no_face_detected"}`
+                            Required format:
+                            {"score":72,"potential":85,"jawline_score":68,"cheekbones":74,"skin_quality":80,"dimorphism":70,"eyes":76,"facial_harmony":73,"psl_score":5.2,"eye_color":"Brown","upper_eyelid_exposure":"None","canthal_tilt":"Positive","improvements":["Tip 1","Tip 2"],"racial_attraction":{"Asian":70,"Caucasian":60,"Black":50,"Hispanic":65,"Middle Eastern":55,"South Asian":50}}`
                         },
                         {
                             role: "user",
                             content: [
-                                { type: "text", text: "Here is my side-by-side combined photo for face analysis. Left side is front view, right side is profile view. Please analyze and return JSON." },
+                                { type: "text", text: "Analyze this image and output the exact requested JSON schema structure." },
                                 { type: "image_url", image_url: { url: combinedUri } }
                             ]
                         }
@@ -158,53 +140,33 @@ If no face is visible at all, respond with: {"error":"no_face_detected"}`
                 })
             });
 
-            if (!response.ok) throw new Error(`Analysis failed: ${response.statusText}`);
+            if (!response.ok) {
+                throw new Error("Server communication issue. Check route parameters.");
+            }
 
             const data = await response.json();
-            console.log("[face] raw API data:", JSON.stringify(data));
 
             try {
-                let parsed: any;
                 const rawResponse = typeof data.response === "string" ? data.response.trim() : "";
+                if (!rawResponse) throw new Error("Empty analysis payload received.");
 
-                if (!rawResponse) {
-                    throw new Error("No response payload returned from the AI.");
-                }
-
-                // Isolate pure JSON string by stripping markdown fences if model outputs them
                 let cleanJson = rawResponse.replace(/```json|```/g, '').trim();
-                
-                // Final regex fallback isolation to grab purely the main structural bounds
                 const jsonMatch = cleanJson.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    cleanJson = jsonMatch[0];
-                }
+                if (jsonMatch) cleanJson = jsonMatch[0];
 
-                parsed = JSON.parse(cleanJson);
+                const parsed = JSON.parse(cleanJson);
 
-                if (parsed.error === "no_face_detected") {
-                    throw new Error("No face detected. Please upload clear photos with a visible face.");
-                }
-                if (parsed.error === "poor_image_quality") {
-                    throw new Error(parsed.message || "Image quality too low. Please upload clearer, well-lit photos.");
-                }
                 if (parsed.error) {
-                    throw new Error(parsed.message || "Could not analyze your photos.");
-                }
-
-                const requiredFields = ['score', 'potential', 'jawline_score', 'cheekbones', 'skin_quality', 'dimorphism', 'eyes', 'facial_harmony'];
-                const missingFields = requiredFields.filter(f => parsed[f] === undefined || parsed[f] === null);
-                if (missingFields.length > 0) {
-                    throw new Error("Incomplete calculation matrix. Please try with clearer photos.");
+                    throw new Error(parsed.message || "Could not complete scan verification.");
                 }
 
                 setResult(parsed);
             } catch (parseError: any) {
-                throw new Error(parseError.message || "Couldn't parse the visual analytics payload correctly.");
+                throw new Error("Unable to read facial scores. Ensure your face is fully lit and visible.");
             }
         } catch (error: any) {
             toast.error(error.message);
-            console.error("Analysis error:", error);
+            console.error("Analysis handling crash:", error);
         } finally {
             setIsLoading(false);
         }
@@ -290,28 +252,6 @@ If no face is visible at all, respond with: {"error":"no_face_detected"}`
                                 </span>
                             )}
                         </Button>
-
-                        <div className="mt-8 space-y-4">
-                            <div>
-                                <h2 className="text-lg font-semibold">What you'll get</h2>
-                                <p className="text-sm text-muted-foreground mt-1">A detailed breakdown of your facial features — PSL score, symmetry, jawline, cheekbones, skin quality, and more — plus personalised improvement tips.</p>
-                            </div>
-                            <div className="grid gap-4">
-                                {[
-                                    { src: "/face1.png", label: "Overall Score & PSL Rating", desc: "See your overall attractiveness score and where you sit on the PSL scale from 1 (subhuman) to 8 (Tera Chad)." },
-                                    { src: "/face2.png", label: "Feature Breakdown", desc: "Individual scores for jawline, cheekbones, eye shape, skin quality, sexual dimorphism, and facial harmony." },
-                                    { src: "/face3.png", label: "Improvement Tips & Attraction Stats", desc: "Actionable tips to boost your looks, plus estimated attraction percentages across demographics." },
-                                ].map((item) => (
-                                    <div key={item.src} className="rounded-3xl bg-muted p-4 flex flex-col gap-3">
-                                        <img src={item.src} alt={item.label} className="w-full h-auto rounded-2xl object-contain" />
-                                        <div>
-                                            <p className="text-sm font-semibold">{item.label}</p>
-                                            <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                 ) : (
                     <Card className="border-none">
@@ -409,36 +349,6 @@ If no face is visible at all, respond with: {"error":"no_face_detected"}`
                                 ))}
                             </div>
 
-                            {(result.eye_color || result.upper_eyelid_exposure || result.canthal_tilt) && (
-                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
-                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Eye Details</h3>
-                                    <div className="grid grid-cols-3 gap-3">
-                                        {result.eye_color && (
-                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                <span className="text-xs text-muted-foreground">Eye Color</span>
-                                                <span className="text-sm font-semibold text-white">{result.eye_color}</span>
-                                            </div>
-                                        )}
-                                        {result.upper_eyelid_exposure && (
-                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                <span className="text-xs text-muted-foreground">Eyelid Exposure</span>
-                                                <span className={`text-sm font-semibold ${result.upper_eyelid_exposure === "A lot" ? "text-green-400" : result.upper_eyelid_exposure === "Present" ? "text-yellow-400" : "text-red-400"}`}>
-                                                    {result.upper_eyelid_exposure}
-                                                </span>
-                                            </div>
-                                        )}
-                                        {result.canthal_tilt && (
-                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                <span className="text-xs text-muted-foreground">Canthal Tilt</span>
-                                                <span className={`text-sm font-semibold ${result.canthal_tilt === "Positive" ? "text-green-400" : result.canthal_tilt === "Neutral" ? "text-yellow-400" : "text-red-400"}`}>
-                                                    {result.canthal_tilt}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-
                             {result.psl_score != null && (() => {
                                 const tier = getPslTier(result.psl_score);
                                 const pslPct = ((result.psl_score - 1) / 7) * 100;
@@ -463,54 +373,9 @@ If no face is visible at all, respond with: {"error":"no_face_detected"}`
                                                 style={{ width: `${pslPct}%`, backgroundColor: tier.color }}
                                             />
                                         </div>
-                                        <div className="flex justify-between text-xs text-muted-foreground">
-                                            <span>1.0 Subhuman</span>
-                                            <span>4.5 Average</span>
-                                            <span>8.0 Tera Chad</span>
-                                        </div>
                                     </div>
                                 );
                             })()}
-
-                            {result.improvements && result.improvements.length > 0 && (
-                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
-                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Improvement Tips</h3>
-                                    <div className="flex flex-col gap-3">
-                                        {result.improvements.map((tip: string, i: number) => (
-                                            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                <span className="text-green-400 font-bold text-sm shrink-0 mt-0.5">{i + 1}.</span>
-                                                <p className="text-sm text-white/80">{tip}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {result.racial_attraction && Object.keys(result.racial_attraction).length > 0 && (
-                                <div className="space-y-4 mt-8">
-                                    <div>
-                                        <h3 className="font-medium">Most Attractive To</h3>
-                                        <p className="text-xs text-muted-foreground mt-1">Estimated attraction by demographic based on your facial features</p>
-                                    </div>
-                                    <div className="space-y-3">
-                                        {(Object.entries(result.racial_attraction) as [string, number][])
-                                            .sort(([, a], [, b]) => b - a)
-                                            .map(([race, pct], index) => (
-                                                <div key={race} className="flex items-center gap-3">
-                                                    <div className="w-5 text-xs text-muted-foreground text-right shrink-0">{index + 1}</div>
-                                                    <div className="w-32 shrink-0"><span className="text-sm font-medium">{race}</span></div>
-                                                    <div className="flex-1">
-                                                        <Progress
-                                                            value={pct}
-                                                            className={`h-2.5 ${pct >= 70 ? '[&>*]:bg-[#34d399]' : pct >= 50 ? '[&>*]:bg-[#fdfd96]' : '[&>*]:bg-red-500'}`}
-                                                        />
-                                                    </div>
-                                                    <div className="w-10 text-right text-sm font-semibold shrink-0">{pct}%</div>
-                                                </div>
-                                            ))}
-                                    </div>
-                                </div>
-                            )}
                         </CardContent>
                     </Card>
                 )}
