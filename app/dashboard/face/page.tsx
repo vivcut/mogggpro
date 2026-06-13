@@ -16,7 +16,6 @@ import { PurchaseContext, UserContext } from "@/app/rootprovider";
 // Helper function to stitch front and side photos together into one image
 async function stitchImages(file1: File, file2: File): Promise<string> {
     return new Promise((resolve, reject) => {
-        // Use window.Image to avoid collision with Next.js 'Image' component import
         const img1 = new window.Image();
         const img2 = new window.Image();
         let loadedCount = 0;
@@ -28,7 +27,6 @@ async function stitchImages(file1: File, file2: File): Promise<string> {
                 const ctx = canvas.getContext('2d');
                 if (!ctx) return reject(new Error("Failed to get canvas context"));
 
-                // Normalize height to 800px to keep payload slim and fast
                 const targetHeight = 800;
                 const scale1 = targetHeight / img1.height;
                 const scale2 = targetHeight / img2.height;
@@ -39,11 +37,9 @@ async function stitchImages(file1: File, file2: File): Promise<string> {
                 canvas.width = w1 + w2;
                 canvas.height = targetHeight;
 
-                // Draw images side-by-side (Front profile on left, Side profile on right)
                 ctx.drawImage(img1, 0, 0, w1, targetHeight);
                 ctx.drawImage(img2, w1, 0, w2, targetHeight);
 
-                // Convert to compressed JPEG data URL
                 resolve(canvas.toDataURL('image/jpeg', 0.85));
             }
         };
@@ -119,10 +115,8 @@ export default function FaceAnalysisPage() {
         setResult(null);
 
         try {
-            // 1. Stitch both files side-by-side into a single canvas data URI image string
             const combinedUri = await stitchImages(frontFile, sideFile);
 
-            // 2. Post the single combined image to your unified backend route
             const response = await fetch('/api/ai/vision', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -183,19 +177,15 @@ Example output format:
 
             try {
                 let parsed: any;
-                if (data.response && typeof data.response === "object") {
-                    parsed = data.response;
-                } else {
-                    const rawResponse: string = (typeof data.response === "string" ? data.response : "") ?? "";
-                    const cleanJson = rawResponse.replace(/```json|```/g, '').trim();
-                    const jsonMatch = cleanJson.match(/\{[\s\S]*\}/);
-                    if (!jsonMatch) {
-                        console.error("[face] no JSON block found. Raw response was:", rawResponse);
-                        throw new Error("No face analysis data returned. Try clearer, front-facing photos.");
-                    }
-                    const sanitized = jsonMatch[0].replace(/\\([^"\\/bfnrtu])/g, '$1');
-                    parsed = JSON.parse(sanitized);
+                const rawResponse = typeof data.response === "string" ? data.response.trim() : "";
+
+                if (!rawResponse) {
+                    throw new Error("No face analysis data returned from the engine.");
                 }
+
+                // Safely sanitize and extract the content without strict regex matches
+                const cleanJson = rawResponse.replace(/```json|```/g, '').trim();
+                parsed = JSON.parse(cleanJson);
 
                 if (parsed.error === "no_face_detected") {
                     throw new Error("No face detected. Please upload clear photos with a visible face.");
@@ -210,7 +200,7 @@ Example output format:
                 const requiredFields = ['score', 'potential', 'jawline_score', 'cheekbones', 'skin_quality', 'dimorphism', 'eyes', 'facial_harmony'];
                 const missingFields = requiredFields.filter(f => parsed[f] === undefined || parsed[f] === null);
                 if (missingFields.length > 0) {
-                    throw new Error("Incomplete analysis. Please try with clearer photos.");
+                    throw new Error("Incomplete analysis layout data returned. Please try with clearer photos.");
                 }
 
                 setResult(parsed);
@@ -382,133 +372,123 @@ Example output format:
                                 )}
                             </div>
 
-                            <FadeIn delay={100}>
-                                <div className="mt-6 grid grid-cols-2 gap-4">
-                                    <div className="rounded-3xl p-5 bg-white/5 space-y-1">
-                                        <p className="text-xs text-muted-foreground uppercase tracking-widest">Overall Score</p>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-4xl font-bold text-white">{result.score}</span>
-                                            <span className="text-muted-foreground text-sm">/ 100</span>
-                                        </div>
-                                        <Progress value={result.score} className="h-2 mt-2" />
+                            <div className="mt-6 grid grid-cols-2 gap-4">
+                                <div className="rounded-3xl p-5 bg-white/5 space-y-1">
+                                    <p className="text-xs text-muted-foreground uppercase tracking-widest">Overall Score</p>
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-4xl font-bold text-white">{result.score}</span>
+                                        <span className="text-muted-foreground text-sm">/ 100</span>
                                     </div>
-                                    <div className="rounded-3xl p-5 bg-white/5 space-y-1">
-                                        <p className="text-xs text-muted-foreground uppercase tracking-widest">Potential Score</p>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-4xl font-bold text-green-400">{result.potential}</span>
-                                            <span className="text-muted-foreground text-sm">/ 100</span>
-                                        </div>
-                                        <Progress value={result.potential} className="h-2 mt-2 [&>*]:bg-green-400" />
-                                    </div>
+                                    <Progress value={result.score} className="h-2 mt-2" />
                                 </div>
-                            </FadeIn>
+                                <div className="rounded-3xl p-5 bg-white/5 space-y-1">
+                                    <p className="text-xs text-muted-foreground uppercase tracking-widest">Potential Score</p>
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-4xl font-bold text-green-400">{result.potential}</span>
+                                        <span className="text-muted-foreground text-sm">/ 100</span>
+                                    </div>
+                                    <Progress value={result.potential} className="h-2 mt-2 [&>*]:bg-green-400" />
+                                </div>
+                            </div>
 
-                            <FadeIn delay={150}>
-                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
-                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Feature Breakdown</h3>
-                                    {[
-                                        { label: "Jawline",         value: result.jawline_score },
-                                        { label: "Cheekbones",      value: result.cheekbones },
-                                        { label: "Skin Quality",    value: result.skin_quality },
-                                        { label: "Dimorphism",      value: result.dimorphism },
-                                        { label: "Eyes",            value: result.eyes },
-                                        { label: "Facial Harmony",  value: result.facial_harmony },
-                                    ].map(({ label, value }) => (
-                                        <div key={label} className="flex items-center gap-3">
-                                            <span className="w-32 text-sm text-muted-foreground shrink-0">{label}</span>
-                                            <div className="flex-1">
-                                                <Progress
-                                                    value={value}
-                                                    className={`h-2 ${value >= 70 ? '[&>*]:bg-[#34d399]' : value >= 50 ? '[&>*]:bg-[#fdfd96]' : '[&>*]:bg-[#fb923c]'}`}
-                                                />
-                                            </div>
-                                            <span className="w-10 text-right text-sm font-semibold shrink-0">{value}</span>
+                            <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Feature Breakdown</h3>
+                                {[
+                                    { label: "Jawline",         value: result.jawline_score },
+                                    { label: "Cheekbones",      value: result.cheekbones },
+                                    { label: "Skin Quality",    value: result.skin_quality },
+                                    { label: "Dimorphism",      value: result.dimorphism },
+                                    { label: "Eyes",            value: result.eyes },
+                                    { label: "Facial Harmony",  value: result.facial_harmony },
+                                ].map(({ label, value }) => (
+                                    <div key={label} className="flex items-center gap-3">
+                                        <span className="w-32 text-sm text-muted-foreground shrink-0">{label}</span>
+                                        <div className="flex-1">
+                                            <Progress
+                                                value={value}
+                                                className={`h-2 ${value >= 70 ? '[&>*]:bg-[#34d399]' : value >= 50 ? '[&>*]:bg-[#fdfd96]' : '[&>*]:bg-[#fb923c]'}`}
+                                            />
                                         </div>
-                                    ))}
-                                </div>
-                            </FadeIn>
+                                        <span className="w-10 text-right text-sm font-semibold shrink-0">{value}</span>
+                                    </div>
+                                ))}
+                            </div>
 
                             {(result.eye_color || result.upper_eyelid_exposure || result.canthal_tilt) && (
-                                <FadeIn delay={175}>
-                                    <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
-                                        <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Eye Details</h3>
-                                        <div className="grid grid-cols-3 gap-3">
-                                            {result.eye_color && (
-                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                    <span className="text-xs text-muted-foreground">Eye Color</span>
-                                                    <span className="text-sm font-semibold text-white">{result.eye_color}</span>
-                                                </div>
-                                            )}
-                                            {result.upper_eyelid_exposure && (
-                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                    <span className="text-xs text-muted-foreground">Eyelid Exposure</span>
-                                                    <span className={`text-sm font-semibold ${result.upper_eyelid_exposure === "A lot" ? "text-green-400" : result.upper_eyelid_exposure === "Present" ? "text-yellow-400" : "text-red-400"}`}>
-                                                        {result.upper_eyelid_exposure}
-                                                    </span>
-                                                </div>
-                                            )}
-                                            {result.canthal_tilt && (
-                                                <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                    <span className="text-xs text-muted-foreground">Canthal Tilt</span>
-                                                    <span className={`text-sm font-semibold ${result.canthal_tilt === "Positive" ? "text-green-400" : result.canthal_tilt === "Neutral" ? "text-yellow-400" : "text-red-400"}`}>
-                                                        {result.canthal_tilt}
-                                                    </span>
-                                                </div>
-                                            )}
-                                        </div>
+                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Eye Details</h3>
+                                    <div className="grid grid-cols-3 gap-3">
+                                        {result.eye_color && (
+                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                <span className="text-xs text-muted-foreground">Eye Color</span>
+                                                <span className="text-sm font-semibold text-white">{result.eye_color}</span>
+                                            </div>
+                                        )}
+                                        {result.upper_eyelid_exposure && (
+                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                <span className="text-xs text-muted-foreground">Eyelid Exposure</span>
+                                                <span className={`text-sm font-semibold ${result.upper_eyelid_exposure === "A lot" ? "text-green-400" : result.upper_eyelid_exposure === "Present" ? "text-yellow-400" : "text-red-400"}`}>
+                                                    {result.upper_eyelid_exposure}
+                                                </span>
+                                            </div>
+                                        )}
+                                        {result.canthal_tilt && (
+                                            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                <span className="text-xs text-muted-foreground">Canthal Tilt</span>
+                                                <span className={`text-sm font-semibold ${result.canthal_tilt === "Positive" ? "text-green-400" : result.canthal_tilt === "Neutral" ? "text-yellow-400" : "text-red-400"}`}>
+                                                    {result.canthal_tilt}
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
-                                </FadeIn>
+                                </div>
                             )}
 
                             {result.psl_score != null && (() => {
                                 const tier = getPslTier(result.psl_score);
                                 const pslPct = ((result.psl_score - 1) / 7) * 100;
                                 return (
-                                    <FadeIn delay={200}>
-                                        <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-3">
-                                            <div className="flex items-start justify-between flex-wrap gap-2">
-                                                <div>
-                                                    <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1">PSL Score</p>
-                                                    <div className="flex items-baseline gap-2">
-                                                        <span className="text-5xl font-bold" style={{ color: tier.color }}>{result.psl_score.toFixed(1)}</span>
-                                                        <span className="text-muted-foreground text-sm">/ 8.0</span>
-                                                    </div>
-                                                </div>
-                                                <div className="text-right">
-                                                    <p className="font-semibold text-lg" style={{ color: tier.color }}>{tier.label}</p>
-                                                    <p className="text-xs text-muted-foreground">{tier.sub}</p>
+                                    <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-3">
+                                        <div className="flex items-start justify-between flex-wrap gap-2">
+                                            <div>
+                                                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1">PSL Score</p>
+                                                <div className="flex items-baseline gap-2">
+                                                    <span className="text-5xl font-bold" style={{ color: tier.color }}>{result.psl_score.toFixed(1)}</span>
+                                                    <span className="text-muted-foreground text-sm">/ 8.0</span>
                                                 </div>
                                             </div>
-                                            <div className="relative w-full h-3 rounded-full overflow-hidden bg-white/10">
-                                                <div
-                                                    className="absolute left-0 top-0 h-full rounded-full transition-all duration-700"
-                                                    style={{ width: `${pslPct}%`, backgroundColor: tier.color }}
-                                                />
-                                            </div>
-                                            <div className="flex justify-between text-xs text-muted-foreground">
-                                                <span>1.0 Subhuman</span>
-                                                <span>4.5 Average</span>
-                                                <span>8.0 Tera Chad</span>
+                                            <div className="text-right">
+                                                <p className="font-semibold text-lg" style={{ color: tier.color }}>{tier.label}</p>
+                                                <p className="text-xs text-muted-foreground">{tier.sub}</p>
                                             </div>
                                         </div>
-                                    </FadeIn>
+                                        <div className="relative w-full h-3 rounded-full overflow-hidden bg-white/10">
+                                            <div
+                                                className="absolute left-0 top-0 h-full rounded-full transition-all duration-700"
+                                                style={{ width: `${pslPct}%`, backgroundColor: tier.color }}
+                                            />
+                                        </div>
+                                        <div className="flex justify-between text-xs text-muted-foreground">
+                                            <span>1.0 Subhuman</span>
+                                            <span>4.5 Average</span>
+                                            <span>8.0 Tera Chad</span>
+                                        </div>
+                                    </div>
                                 );
                             })()}
 
                             {result.improvements && result.improvements.length > 0 && (
-                                <FadeIn delay={225}>
-                                    <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
-                                        <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Improvement Tips</h3>
-                                        <div className="flex flex-col gap-3">
-                                            {result.improvements.map((tip: string, i: number) => (
-                                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-                                                    <span className="text-green-400 font-bold text-sm shrink-0 mt-0.5">{i + 1}.</span>
-                                                    <p className="text-sm text-white/80">{tip}</p>
-                                                </div>
-                                            ))}
-                                        </div>
+                                <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-4">
+                                    <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Improvement Tips</h3>
+                                    <div className="flex flex-col gap-3">
+                                        {result.improvements.map((tip: string, i: number) => (
+                                            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                                                <span className="text-green-400 font-bold text-sm shrink-0 mt-0.5">{i + 1}.</span>
+                                                <p className="text-sm text-white/80">{tip}</p>
+                                            </div>
+                                        ))}
                                     </div>
-                                </FadeIn>
+                                </div>
                             )}
 
                             {result.racial_attraction && Object.keys(result.racial_attraction).length > 0 && (
