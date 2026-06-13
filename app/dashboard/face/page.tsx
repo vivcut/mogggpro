@@ -9,7 +9,6 @@ import { DownloadCloudIcon, Copy } from "lucide-react";
 import { LoadingSpinner } from "@/components/ui/spinner";
 import { ArrowClockwiseIcon, UploadIcon } from "@phosphor-icons/react/dist/ssr";
 import { ArrowCounterClockwiseIcon, FileIcon, InstagramLogoIcon, WhatsappLogoIcon } from "@phosphor-icons/react";
-import FadeIn from "react-fade-in";
 import Image from "next/image";
 import { PurchaseContext, UserContext } from "@/app/rootprovider";
 
@@ -123,8 +122,7 @@ export default function FaceAnalysisPage() {
                     messages: [
                         {
                             role: "system",
-                            content: `You are an expert facial aesthetics analyst. The user has provided an image containing two views of the same person stitched together side-by-side. 
-                            You must respond with ONLY a valid JSON object string. Do not include any markdown fences or extraneous conversational explanations.
+                            content: `You are an expert facial aesthetics analyst. Respond with ONLY a valid JSON object string. Do not include markdown fences or explanations.
 
                             Required format:
                             {"score":72,"potential":85,"jawline_score":68,"cheekbones":74,"skin_quality":80,"dimorphism":70,"eyes":76,"facial_harmony":73,"psl_score":5.2,"eye_color":"Brown","upper_eyelid_exposure":"None","canthal_tilt":"Positive","improvements":["Tip 1","Tip 2"],"racial_attraction":{"Asian":70,"Caucasian":60,"Black":50,"Hispanic":65,"Middle Eastern":55,"South Asian":50}}`
@@ -132,7 +130,7 @@ export default function FaceAnalysisPage() {
                         {
                             role: "user",
                             content: [
-                                { type: "text", text: "Analyze this image and output the exact requested JSON schema structure." },
+                                { type: "text", text: "Analyze this face composite and output raw JSON schema structure." },
                                 { type: "image_url", image_url: { url: combinedUri } }
                             ]
                         }
@@ -141,32 +139,30 @@ export default function FaceAnalysisPage() {
             });
 
             if (!response.ok) {
-                throw new Error("Server communication issue. Check route parameters.");
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.message || `Server communication issue. Status code: ${response.status}`);
             }
 
             const data = await response.json();
 
             try {
                 const rawResponse = typeof data.response === "string" ? data.response.trim() : "";
-                if (!rawResponse) throw new Error("Empty analysis payload received.");
+                if (!rawResponse) throw new Error("Empty processing token index value returned.");
 
                 let cleanJson = rawResponse.replace(/```json|```/g, '').trim();
                 const jsonMatch = cleanJson.match(/\{[\s\S]*\}/);
                 if (jsonMatch) cleanJson = jsonMatch[0];
 
                 const parsed = JSON.parse(cleanJson);
-
-                if (parsed.error) {
-                    throw new Error(parsed.message || "Could not complete scan verification.");
-                }
+                if (parsed.error) throw new Error(parsed.message || "Failed model analysis parameters.");
 
                 setResult(parsed);
             } catch (parseError: any) {
-                throw new Error("Unable to read facial scores. Ensure your face is fully lit and visible.");
+                throw new Error("Unable to parse alignment metrics. Make sure your eyes and jaw are visible.");
             }
         } catch (error: any) {
             toast.error(error.message);
-            console.error("Analysis handling crash:", error);
+            console.error("Analysis route exception:", error);
         } finally {
             setIsLoading(false);
         }
@@ -351,7 +347,6 @@ export default function FaceAnalysisPage() {
 
                             {result.psl_score != null && (() => {
                                 const tier = getPslTier(result.psl_score);
-                                const pslPct = ((result.psl_score - 1) / 7) * 100;
                                 return (
                                     <div className="mt-6 rounded-3xl p-6 bg-white/5 space-y-3">
                                         <div className="flex items-start justify-between flex-wrap gap-2">
@@ -362,16 +357,6 @@ export default function FaceAnalysisPage() {
                                                     <span className="text-muted-foreground text-sm">/ 8.0</span>
                                                 </div>
                                             </div>
-                                            <div className="text-right">
-                                                <p className="font-semibold text-lg" style={{ color: tier.color }}>{tier.label}</p>
-                                                <p className="text-xs text-muted-foreground">{tier.sub}</p>
-                                            </div>
-                                        </div>
-                                        <div className="relative w-full h-3 rounded-full overflow-hidden bg-white/10">
-                                            <div
-                                                className="absolute left-0 top-0 h-full rounded-full transition-all duration-700"
-                                                style={{ width: `${pslPct}%`, backgroundColor: tier.color }}
-                                            />
                                         </div>
                                     </div>
                                 );
