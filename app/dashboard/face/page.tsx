@@ -126,7 +126,7 @@ export default function FaceAnalysisPage() {
                             role: "system",
                             content: `You are an expert facial aesthetics analyst. The user has provided an image containing two views of the same person stitched together side-by-side: a front-facing photo on the left and a side-facing (profile) photo on the right. Use both perspectives together to give a comprehensive analysis.
 
-You must respond with ONLY a valid JSON object — no markdown, no explanation, no extra text.
+You must respond with ONLY a valid JSON object string wrapper — do not include any markdown backticks, explanations, or extraneous text outside the object layout.
 
 JSON fields required:
 - score: integer 0-100 overall attractiveness score
@@ -138,26 +138,14 @@ JSON fields required:
 - eyes: integer 0-100 eye shape, symmetry, and expressiveness
 - facial_harmony: integer 0-100 overall facial symmetry and proportions
 - eye_color: string — detected eye color (e.g. "Brown", "Blue", "Green", "Hazel", "Amber", "Gray", "Black")
-- upper_eyelid_exposure: string — one of exactly: "None", "Present", or "A lot" — how much upper eyelid is visible between the iris and the upper eyelid fold
-- canthal_tilt: string — one of exactly: "Positive", "Negative", or "Neutral" — the angle of the outer vs inner canthus of the eye
+- upper_eyelid_exposure: string — one of exactly: "None", "Present", or "A lot"
+- canthal_tilt: string — one of exactly: "Positive", "Negative", or "Neutral"
 - improvements: array of 3-5 short actionable improvement tips as strings
 - racial_attraction: object with keys "Asian", "Caucasian", "Black", "Hispanic", "Middle Eastern", "South Asian" — each value is an integer 0-100 representing estimated % attraction from that group based on facial features and aesthetics
-- psl_score: a decimal number from 1.0 to 8.0 representing the PSL (Pretty Scale Lookism) rating. Use the following tiers exactly:
-  * 1.0–2.0 = Subhuman (severe asymmetry/deformities, bottom 0.1%)
-  * 2.0–3.0 = Sub-5 / Sub-Average (noticeably unattractive, bottom 1-5%)
-  * 3.0–4.0 = LTN - Low-Tier Normie (slightly below average, bottom 5-25%)
-  * 4.0–5.0 = MTN - Mid-Tier Normie (absolute average human, 25th-50th percentile)
-  * 5.0–6.0 = HTN - High-Tier Normie (conventionally attractive, 50th-85th percentile)
-  * 6.0–6.5 = Chadlite (strong striking structure, top 2-15%)
-  * 6.5–7.0 = Chad (exceptional harmony and bone structure, top 0.5-2%)
-  * 7.0–7.75 = Giga Chad (barely perceivable flaws, top 0.1%)
-  * 7.75–8.0 = True Adam / Tera Chad (theoretical genetic perfection, 0.001%)
+- psl_score: a decimal number from 1.0 to 8.0 representing the PSL rating.
 
 If the image quality is too poor, blurry, or the face is not clearly visible, respond with: {"error":"poor_image_quality","message":"The uploaded images are too blurry or poorly lit. Please upload a clearer face shot."}
-If no face is visible at all, respond with: {"error":"no_face_detected"}
-
-Example output format:
-{"score":72,"potential":85,"jawline_score":68,"cheekbones":74,"skin_quality":80,"dimorphism":70,"eyes":76,"facial_harmony":73,"psl_score":5.2,"improvements":["Improve skin hydration","Consider a structured haircut to enhance jawline","Better lighting in photos can highlight your features"],"racial_attraction":{"Asian":78,"Caucasian":65,"Black":60,"Hispanic":70,"Middle Eastern":55,"South Asian":62}}`
+If no face is visible at all, respond with: {"error":"no_face_detected"}`
                         },
                         {
                             role: "user",
@@ -180,11 +168,18 @@ Example output format:
                 const rawResponse = typeof data.response === "string" ? data.response.trim() : "";
 
                 if (!rawResponse) {
-                    throw new Error("No face analysis data returned from the engine.");
+                    throw new Error("No response payload returned from the AI.");
                 }
 
-                // Safely sanitize and extract the content without strict regex matches
-                const cleanJson = rawResponse.replace(/```json|```/g, '').trim();
+                // Isolate pure JSON string by stripping markdown fences if model outputs them
+                let cleanJson = rawResponse.replace(/```json|```/g, '').trim();
+                
+                // Final regex fallback isolation to grab purely the main structural bounds
+                const jsonMatch = cleanJson.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    cleanJson = jsonMatch[0];
+                }
+
                 parsed = JSON.parse(cleanJson);
 
                 if (parsed.error === "no_face_detected") {
@@ -194,18 +189,18 @@ Example output format:
                     throw new Error(parsed.message || "Image quality too low. Please upload clearer, well-lit photos.");
                 }
                 if (parsed.error) {
-                    throw new Error(parsed.message || "Could not analyze your photos. Please try again with better images.");
+                    throw new Error(parsed.message || "Could not analyze your photos.");
                 }
 
                 const requiredFields = ['score', 'potential', 'jawline_score', 'cheekbones', 'skin_quality', 'dimorphism', 'eyes', 'facial_harmony'];
                 const missingFields = requiredFields.filter(f => parsed[f] === undefined || parsed[f] === null);
                 if (missingFields.length > 0) {
-                    throw new Error("Incomplete analysis layout data returned. Please try with clearer photos.");
+                    throw new Error("Incomplete calculation matrix. Please try with clearer photos.");
                 }
 
                 setResult(parsed);
             } catch (parseError: any) {
-                throw new Error(parseError.message || "Couldn't analyze the images. Make sure both photos show a clear face.");
+                throw new Error(parseError.message || "Couldn't parse the visual analytics payload correctly.");
             }
         } catch (error: any) {
             toast.error(error.message);
